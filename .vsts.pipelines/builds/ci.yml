@@ -6,8 +6,6 @@ trigger:
     - release/*
   paths:
     exclude:
-    - .github/*
-    - Documentation/*
     - '*.md'
 
 pr:
@@ -17,8 +15,6 @@ pr:
     - release/*
   paths:
     exclude:
-    - .github/*
-    - Documentation/*
     - '*.md'
 
 stages:

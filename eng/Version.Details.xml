@@ -11,9 +11,9 @@
       <Sha>b74d568abf257cbac3d9a595e7223b25d8d6b90d</Sha>
       <SourceBuild RepoName="sourcelink" ManagedOnly="true" />
     </Dependency>
-    <Dependency Name="Microsoft.SourceBuild.Intermediate.source-build-reference-packages" Version="7.0.0-alpha.1.22166.2">
+    <Dependency Name="Microsoft.SourceBuild.Intermediate.source-build-reference-packages" Version="7.0.0-alpha.1.22255.1">
       <Uri>https://github.com/dotnet/source-build-reference-packages</Uri>
-      <Sha>249bf138d61d2427c50788a01c89caa80a2711fa</Sha>
+      <Sha>6ae03467813828fd0fba99db6dbc2b0b36031ba5</Sha>
       <SourceBuild RepoName="source-build-reference-packages" ManagedOnly="true" />
     </Dependency>
   </ToolsetDependencies>

@@ -1,0 +1,39 @@
+<Project>
+  <Import Project="Sdk.props" Sdk="Microsoft.NET.Sdk" />
+
+  <PropertyGroup>
+    <PackagesOutput>$(ProjectDirectory)/src/jab/src/Jab/bin/$(Configuration)/</PackagesOutput>
+    <RepoApiImplemented>false</RepoApiImplemented>
+    <DeterministicBuildOptOut>true</DeterministicBuildOptOut>
+    <NuGetConfigFile>$(ProjectDirectory)/NuGet.config</NuGetConfigFile>
+  </PropertyGroup>
+
+  <Import Project="Sdk.targets" Sdk="Microsoft.NET.Sdk" />
+
+  <Target Name="RepoBuild">
+    <PropertyGroup>
+      <BuildCommandArgs>$(ProjectDirectory)src/Jab/Jab.csproj</BuildCommandArgs>
+      <BuildCommandArgs>$(BuildCommandArgs) /p:Configuration=$(Configuration)</BuildCommandArgs>
+      <!-- The hardcoded version should be removed after https://github.com/pakrym/jab/issues/101 is fixed. -->
+      <BuildCommandArgs>$(BuildCommandArgs) /p:PackageVersion=0.8.0</BuildCommandArgs>
+      <BuildCommandArgs>$(BuildCommandArgs) /v:$(LogVerbosity)</BuildCommandArgs>
+      <BuildCommandArgs>$(BuildCommandArgs) $(RedirectRepoOutputToLog)</BuildCommandArgs>
+    </PropertyGroup>
+
+    <Exec Command="$(DotnetToolCommand) restore /bl:restore.binlog $(BuildCommandArgs) $(RedirectRepoOutputToLog)"
+          EnvironmentVariables="@(EnvironmentVariables)"
+          WorkingDirectory="$(ProjectDirectory)"
+          IgnoreStandardErrorWarningFormat="true" />
+
+    <Exec Command="$(DotnetToolCommand) build /bl:build.binlog $(BuildCommandArgs) $(RedirectRepoOutputToLog)"
+          EnvironmentVariables="@(EnvironmentVariables)"
+          WorkingDirectory="$(ProjectDirectory)"
+          IgnoreStandardErrorWarningFormat="true" />
+
+    <Exec Command="$(DotnetToolCommand) pack /bl:pack.binlog $(BuildCommandArgs) $(RedirectRepoOutputToLog)"
+          EnvironmentVariables="@(EnvironmentVariables)"
+          WorkingDirectory="$(ProjectDirectory)"
+          IgnoreStandardErrorWarningFormat="true" />
+  </Target>
+
+</Project>

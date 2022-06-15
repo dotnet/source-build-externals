@@ -13,9 +13,9 @@
   <Target Name="RepoBuild">
     <PropertyGroup>
       <BuildCommandArgs>$(ProjectDirectory)src/Jab/Jab.csproj</BuildCommandArgs>
+      <!-- Omit roslyn3 dependencies that aren't needed for internal consumption. -->
+      <BuildCommandArgs>$(BuildCommandArgs) /p:OmitRoslyn3AnalyzerFromPackage=true</BuildCommandArgs>
       <BuildCommandArgs>$(BuildCommandArgs) /p:Configuration=$(Configuration)</BuildCommandArgs>
-      <!-- The hardcoded version should be removed after https://github.com/pakrym/jab/issues/101 is fixed. -->
-      <BuildCommandArgs>$(BuildCommandArgs) /p:PackageVersion=0.8.0</BuildCommandArgs>
       <BuildCommandArgs>$(BuildCommandArgs) /v:$(LogVerbosity)</BuildCommandArgs>
       <BuildCommandArgs>$(BuildCommandArgs) $(RedirectRepoOutputToLog)</BuildCommandArgs>
     </PropertyGroup>

@@ -16,6 +16,9 @@
       <!-- Omit roslyn3 dependencies that aren't needed for internal consumption. -->
       <BuildCommandArgs>$(BuildCommandArgs) /p:OmitRoslyn3AnalyzerFromPackage=true</BuildCommandArgs>
       <BuildCommandArgs>$(BuildCommandArgs) /p:Configuration=$(Configuration)</BuildCommandArgs>
+      <BuildCommandArgs>$(BuildCommandArgs) /p:MicrosoftSourceLinkVersion=$(MicrosoftSourceLinkVersion)</BuildCommandArgs>
+      <BuildCommandArgs>$(BuildCommandArgs) /p:MicrosoftCodeAnalysisAnalyzersVersion=$(MicrosoftCodeAnalysisAnalyzersVersion)</BuildCommandArgs>
+      <BuildCommandArgs>$(BuildCommandArgs) /p:MicrosoftCodeAnalysisCSharpVersion=$(MicrosoftCodeAnalysisCSharpVersion)</BuildCommandArgs>
       <BuildCommandArgs>$(BuildCommandArgs) /v:$(LogVerbosity)</BuildCommandArgs>
       <BuildCommandArgs>$(BuildCommandArgs) $(RedirectRepoOutputToLog)</BuildCommandArgs>
     </PropertyGroup>

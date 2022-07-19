@@ -2,4 +2,7 @@
   <IgnorePatterns>
     <UsagePattern IdentityGlob="Microsoft.SourceBuild.Intermediate.*/*" />
   </IgnorePatterns>
+  <Usages>
+    <Usage Id="System.Text.Encoding.CodePages" Version="6.0.0" />
+  </Usages>
 </UsageData>

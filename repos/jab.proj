@@ -5,7 +5,7 @@
     <PackagesOutput>$(ProjectDirectory)/src/jab/src/Jab/bin/$(Configuration)/</PackagesOutput>
     <RepoApiImplemented>false</RepoApiImplemented>
     <DeterministicBuildOptOut>true</DeterministicBuildOptOut>
-    <NuGetConfigFile>$(ProjectDirectory)/NuGet.config</NuGetConfigFile>
+    <NuGetConfigFile>$(ProjectDirectory)/NuGet.Config</NuGetConfigFile>
   </PropertyGroup>
 
   <Import Project="Sdk.targets" Sdk="Microsoft.NET.Sdk" />

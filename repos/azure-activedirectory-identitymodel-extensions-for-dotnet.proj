@@ -34,17 +34,17 @@
           WorkingDirectory="$(ProjectDirectory)"
           IgnoreStandardErrorWarningFormat="true" />
 
-    <Exec Command="$(DotnetToolCommand) pack /bl:pack.binlog $(SystemIdentityModelTokensJwtProject) $(PackCommandArgs)"
+    <Exec Command="$(DotnetToolCommand) pack /bl:pack_TokensJwt.binlog $(SystemIdentityModelTokensJwtProject) $(PackCommandArgs)"
           EnvironmentVariables="@(EnvironmentVariables)"
           WorkingDirectory="$(ProjectDirectory)"
           IgnoreStandardErrorWarningFormat="true" />
 
-    <Exec Command="$(DotnetToolCommand) pack /bl:pack.binlog $(MicrosoftIdentityModelsTokenProject) $(PackCommandArgs)"
+    <Exec Command="$(DotnetToolCommand) pack /bl:pack_Tokens.binlog $(MicrosoftIdentityModelsTokenProject) $(PackCommandArgs)"
           EnvironmentVariables="@(EnvironmentVariables)"
           WorkingDirectory="$(ProjectDirectory)"
           IgnoreStandardErrorWarningFormat="true" />
 
-    <Exec Command="$(DotnetToolCommand) pack /bl:pack.binlog $(MicrosoftIdentityModelJsonWebTokensProject) $(PackCommandArgs)"
+    <Exec Command="$(DotnetToolCommand) pack /bl:pack_JsonWebTokens.binlog $(MicrosoftIdentityModelJsonWebTokensProject) $(PackCommandArgs)"
           EnvironmentVariables="@(EnvironmentVariables)"
           WorkingDirectory="$(ProjectDirectory)"
           IgnoreStandardErrorWarningFormat="true" />

@@ -11,9 +11,9 @@
       <Sha>087bc5f9f9897f500e949558316767e148ca677f</Sha>
       <SourceBuild RepoName="roslyn-analyzers" ManagedOnly="true" />
     </Dependency>
-    <Dependency Name="Microsoft.CodeAnalysis.CSharp" Version="4.4.0-1.22371.1">
+    <Dependency Name="Microsoft.CodeAnalysis.CSharp" Version="4.4.0-1.22372.14">
       <Uri>https://github.com/dotnet/roslyn</Uri>
-      <Sha>c07f2571612b471671c809b5b0db59b0c37aab57</Sha>
+      <Sha>fc6873522467b9c009d69b1e4f908ce6daaeb931</Sha>
       <SourceBuild RepoName="roslyn" ManagedOnly="true" />
     </Dependency>
     <Dependency Name="Microsoft.SourceLink.GitHub" Version="1.2.0-beta-22179-02" CoherentParentDependency="Microsoft.DotNet.Arcade.Sdk">

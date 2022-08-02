@@ -2,7 +2,7 @@
   <Import Project="Sdk.props" Sdk="Microsoft.NET.Sdk" />
 
   <PropertyGroup>
-    <PackagesOutput>$(ProjectDirectory)/src/jab/src/Jab/bin/$(Configuration)/</PackagesOutput>
+    <PackagesOutput>$(ProjectDirectory)src/Jab/bin/$(Configuration)/</PackagesOutput>
     <RepoApiImplemented>false</RepoApiImplemented>
     <DeterministicBuildOptOut>true</DeterministicBuildOptOut>
     <NuGetConfigFile>$(ProjectDirectory)/NuGet.Config</NuGetConfigFile>

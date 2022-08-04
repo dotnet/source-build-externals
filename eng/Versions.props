@@ -12,6 +12,6 @@
   <PropertyGroup>
     <HumanizerCorePackageVersion>2.2.0</HumanizerCorePackageVersion>
     <MicrosoftCodeAnalysisCSharpVersion>4.4.0-1.22404.1</MicrosoftCodeAnalysisCSharpVersion>
-    <MicrosoftCodeAnalysisAnalyzersVersion>3.3.4-beta1.22379.1</MicrosoftCodeAnalysisAnalyzersVersion>
+    <MicrosoftCodeAnalysisAnalyzersVersion>3.3.4-beta1.22403.2</MicrosoftCodeAnalysisAnalyzersVersion>
   </PropertyGroup>
 </Project>

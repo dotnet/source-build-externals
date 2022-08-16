@@ -11,14 +11,14 @@
       <Sha>793113a41d7f21b03470521bf48438f2abd9b12f</Sha>
       <SourceBuild RepoName="roslyn-analyzers" ManagedOnly="true" />
     </Dependency>
-    <Dependency Name="Microsoft.CodeAnalysis.CSharp" Version="4.4.0-2.22414.1">
+    <Dependency Name="Microsoft.CodeAnalysis.CSharp" Version="4.4.0-2.22415.10">
       <Uri>https://github.com/dotnet/roslyn</Uri>
-      <Sha>98139d73b9ef47ffa0b5be0b7a61ad36826f1d3b</Sha>
+      <Sha>eaf6778d7238a206876917a24eb8dd9c6dfa3909</Sha>
       <SourceBuild RepoName="roslyn" ManagedOnly="true" />
     </Dependency>
-    <Dependency Name="Microsoft.SourceLink.GitHub" Version="1.2.0-beta-22179-02" CoherentParentDependency="Microsoft.DotNet.Arcade.Sdk">
+    <Dependency Name="Microsoft.SourceLink.GitHub" Version="1.2.0-beta-22251-01" CoherentParentDependency="Microsoft.DotNet.Arcade.Sdk">
       <Uri>https://github.com/dotnet/sourcelink</Uri>
-      <Sha>00accce73f32b91a59d3be28c1f6993c3cd4df3e</Sha>
+      <Sha>b74d568abf257cbac3d9a595e7223b25d8d6b90d</Sha>
       <SourceBuild RepoName="sourcelink" ManagedOnly="true" />
     </Dependency>
     <Dependency Name="Microsoft.SourceBuild.Intermediate.source-build-reference-packages" Version="7.0.0-alpha.1.22356.1">

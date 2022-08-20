@@ -6,9 +6,9 @@
       <Sha>e0b311bcd81fc9e27bcf7715dcda62fa38dfa49a</Sha>
       <SourceBuild RepoName="arcade" ManagedOnly="true" />
     </Dependency>
-    <Dependency Name="Microsoft.CodeAnalysis.Analyzers" Version="3.3.4-beta1.22418.3">
+    <Dependency Name="Microsoft.CodeAnalysis.Analyzers" Version="3.3.4-beta1.22419.4">
       <Uri>https://github.com/dotnet/roslyn-analyzers</Uri>
-      <Sha>fe174f9c41d0cc1c097c807a90c81baa94780776</Sha>
+      <Sha>d80e535c08bf3eace650005ac2e7e061ed8692cd</Sha>
       <SourceBuild RepoName="roslyn-analyzers" ManagedOnly="true" />
     </Dependency>
     <Dependency Name="Microsoft.CodeAnalysis.CSharp" Version="4.4.0-2.22419.7">

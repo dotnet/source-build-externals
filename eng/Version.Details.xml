@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Dependencies>
   <ToolsetDependencies>
-    <Dependency Name="Microsoft.DotNet.Arcade.Sdk" Version="7.0.0-beta.22419.1">
+    <Dependency Name="Microsoft.DotNet.Arcade.Sdk" Version="7.0.0-beta.22423.2">
       <Uri>https://github.com/dotnet/arcade</Uri>
-      <Sha>34dff939b4a91e4693f78a856e0e055c1a3f3fba</Sha>
+      <Sha>0db07252ccb18afdf94820ba6125da6de729ec04</Sha>
       <SourceBuild RepoName="arcade" ManagedOnly="true" />
     </Dependency>
     <Dependency Name="Microsoft.CodeAnalysis.Analyzers" Version="3.3.4-beta1.22368.2">
@@ -16,9 +16,9 @@
       <Sha>a9520913ab0047c0f9c039d42129725fbe09a640</Sha>
       <SourceBuild RepoName="roslyn" ManagedOnly="true" />
     </Dependency>
-    <Dependency Name="Microsoft.SourceLink.GitHub" Version="1.2.0-beta-22418-01" CoherentParentDependency="Microsoft.DotNet.Arcade.Sdk">
+    <Dependency Name="Microsoft.SourceLink.GitHub" Version="1.2.0-beta-22422-02" CoherentParentDependency="Microsoft.DotNet.Arcade.Sdk">
       <Uri>https://github.com/dotnet/sourcelink</Uri>
-      <Sha>a74d21bcfa0f928b0cb1dab9fa6ff8a17248c584</Sha>
+      <Sha>0bba6b2d342056cb3fb3906f25929a92e063c5f8</Sha>
       <SourceBuild RepoName="sourcelink" ManagedOnly="true" />
     </Dependency>
     <Dependency Name="Microsoft.SourceBuild.Intermediate.source-build-reference-packages" Version="7.0.0-alpha.1.22356.1">

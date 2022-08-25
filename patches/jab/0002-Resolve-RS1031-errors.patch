@@ -1,0 +1,34 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Michael Simons <msimons@microsoft.com>
+Date: Thu, 25 Aug 2022 15:36:25 -0500
+Subject: [PATCH] Resolve RS1031 errors
+
+Encountered the following errors when building with the latest roslyn-analyzers version.
+
+error RS1031: The diagnostic title should not contain a period, nor any line return character, nor any leading or trailing whitespaces
+
+Backport: https://github.com/pakrym/jab/pull/121
+---
+ src/Jab/DiagnosticDescriptors.cs | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/src/Jab/DiagnosticDescriptors.cs b/src/Jab/DiagnosticDescriptors.cs
+index 7c744f3..e14b060 100644
+--- a/src/Jab/DiagnosticDescriptors.cs
++++ b/src/Jab/DiagnosticDescriptors.cs
+@@ -43,11 +43,11 @@ internal static class DiagnosticDescriptors
+         "The service '{0}' is not registered", "Usage", DiagnosticSeverity.Error, true);
+ 
+     public static readonly DiagnosticDescriptor ImplementationTypeAndFactoryNotAllowed = new("JAB0011",
+-        "Can't specify both the implementation type and factory/instance.",
++        "Can't specify both the implementation type and factory/instance",
+         "Can't specify both the implementation type and factory/instance, for service '{0}'", "Usage", DiagnosticSeverity.Error, true);
+ 
+     public static readonly DiagnosticDescriptor FactoryMemberMustBeAMethodOrHaveDelegateType = new("JAB0012",
+-        "The factory member has to be a method or have a delegate type.",
++        "The factory member has to be a method or have a delegate type",
+         "The factory member '{0}' has to be a method of have a delegate type, for service '{1}'", "Usage", DiagnosticSeverity.Error, true);
+ 
+-}
+\ No newline at end of file
++}

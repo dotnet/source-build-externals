@@ -11,7 +11,7 @@
   <!-- Humanizer expects us to tell the version it's building -->
   <PropertyGroup>
     <HumanizerCorePackageVersion>2.2.0</HumanizerCorePackageVersion>
-    <MicrosoftCodeAnalysisCSharpVersion>4.4.0-2.22425.8</MicrosoftCodeAnalysisCSharpVersion>
+    <MicrosoftCodeAnalysisCSharpVersion>4.4.0-2.22426.8</MicrosoftCodeAnalysisCSharpVersion>
     <MicrosoftCodeAnalysisAnalyzersVersion>3.3.4-beta1.22419.4</MicrosoftCodeAnalysisAnalyzersVersion>
   </PropertyGroup>
 </Project>

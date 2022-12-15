@@ -57,3 +57,7 @@ stages:
       publishingInfraVersion: 3
       enableSourceLinkValidation: false
       enableSigningValidation: false
+
+variables:
+  - name: Codeql.Enable
+    value: true

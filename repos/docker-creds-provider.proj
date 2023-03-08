@@ -20,11 +20,20 @@
       <BuildCommandArgs>$(BuildCommandArgs) /p:TargetFrameworks=$(NetCurrent)</BuildCommandArgs>
     </PropertyGroup>
 
-    <Exec Command="$(DotnetToolCommand) restore /bl:restore.binlog $(BuildCommandArgs)  " EnvironmentVariables="@(EnvironmentVariables)" WorkingDirectory="$(ProjectDirectory)" IgnoreStandardErrorWarningFormat="true" />
+    <Exec Command="$(DotnetToolCommand) restore /bl:restore.binlog $(BuildCommandArgs)"
+          EnvironmentVariables="@(EnvironmentVariables)"
+          WorkingDirectory="$(ProjectDirectory)"
+          IgnoreStandardErrorWarningFormat="true" />
 
-    <Exec Command="$(DotnetToolCommand) build /bl:build.binlog $(BuildCommandArgs)" EnvironmentVariables="@(EnvironmentVariables)" WorkingDirectory="$(ProjectDirectory)" IgnoreStandardErrorWarningFormat="true" />
+    <Exec Command="$(DotnetToolCommand) build /bl:build.binlog $(BuildCommandArgs)"
+          EnvironmentVariables="@(EnvironmentVariables)"
+          WorkingDirectory="$(ProjectDirectory)"
+          IgnoreStandardErrorWarningFormat="true" />
 
-    <Exec Command="$(DotnetToolCommand) pack /bl:pack.binlog $(BuildCommandArgs)" EnvironmentVariables="@(EnvironmentVariables)" WorkingDirectory="$(ProjectDirectory)" IgnoreStandardErrorWarningFormat="true" />
+    <Exec Command="$(DotnetToolCommand) pack /bl:pack.binlog $(BuildCommandArgs)"
+          EnvironmentVariables="@(EnvironmentVariables)"
+          WorkingDirectory="$(ProjectDirectory)"
+          IgnoreStandardErrorWarningFormat="true" />
   </Target>
 
 </Project>

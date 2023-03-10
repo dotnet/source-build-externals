@@ -3,7 +3,6 @@
 
   <PropertyGroup>
     <PackagesOutput>$(ProjectDirectory)/bin/$(Configuration)</PackagesOutput>
-    <RepoApiImplemented>false</RepoApiImplemented>
     <DeterministicBuildOptOut>true</DeterministicBuildOptOut>
   </PropertyGroup>
 

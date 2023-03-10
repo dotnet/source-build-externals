@@ -5,7 +5,6 @@
     <OutputArgs>/bl /v:$(LogVerbosity) /p:OutputPath=$(OutputPath)$(RepositoryName)/ /p:BaseIntermediateOutputPath=$(IntermediatePath)$(RepositoryName)</OutputArgs>
     <BuildCommand>$(DotnetToolCommand) pack -c $(Configuration) --output $(SourceBuiltPackagesPath) --no-build FSharp.NET.Sdk.csproj /p:NuspecFile=FSharp.NET.Sdk.nuspec $(OutputArgs) $(RedirectRepoOutputToLog)</BuildCommand>
     <PackagesOutput>$(SourceBuiltPackagesPath)</PackagesOutput>
-    <RepoApiImplemented>false</RepoApiImplemented>
     <ProjectDirectory>$(SubmoduleDirectory)$(RepositoryName)/</ProjectDirectory>
   </PropertyGroup>
 

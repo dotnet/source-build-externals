@@ -26,7 +26,6 @@
     <CleanCommand>$(DotnetToolCommand) clean $(NewtonsoftJsonProjectPath) $(DotnetToolCommandArgs)</CleanCommand>
 
     <PackagesOutput>$(NewtonsoftJsonDirectory)bin/$(Configuration)/</PackagesOutput>
-    <DeterministicBuildOptOut>true</DeterministicBuildOptOut>
   </PropertyGroup>
 
   <Target Name="RepoRestore" BeforeTargets="Build" DependsOnTargets="UpdateNuGetConfig">

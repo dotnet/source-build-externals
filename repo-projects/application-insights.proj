@@ -3,7 +3,6 @@
 
   <PropertyGroup>
     <PackagesOutput>$(ProjectDirectory)/bin/$(Configuration)</PackagesOutput>
-    <DeterministicBuildOptOut>true</DeterministicBuildOptOut>
   </PropertyGroup>
 
   <ItemGroup>

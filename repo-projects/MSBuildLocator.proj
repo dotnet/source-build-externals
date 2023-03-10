@@ -3,7 +3,6 @@
 
   <PropertyGroup>
     <PackagesOutput>$(ProjectDirectory)/src/MSBuildLocator/bin/$(Configuration)/</PackagesOutput>
-    <DeterministicBuildOptOut>true</DeterministicBuildOptOut>
   </PropertyGroup>
 
   <Import Project="Sdk.targets" Sdk="Microsoft.NET.Sdk" />

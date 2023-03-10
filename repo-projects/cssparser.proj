@@ -3,7 +3,6 @@
 
   <PropertyGroup>
     <PackagesOutput>$(ProjectDirectory)/src/Microsoft.Css.Parser/bin/$(Configuration)/</PackagesOutput>
-    <DeterministicBuildOptOut>true</DeterministicBuildOptOut>
   </PropertyGroup>
 
   <Import Project="Sdk.targets" Sdk="Microsoft.NET.Sdk" />

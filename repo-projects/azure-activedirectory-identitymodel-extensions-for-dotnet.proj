@@ -3,7 +3,6 @@
 
   <PropertyGroup>
     <PackagesOutput>$(ProjectDirectory)/pack</PackagesOutput>
-    <DeterministicBuildOptOut>true</DeterministicBuildOptOut>
   </PropertyGroup>
 
   <Import Project="Sdk.targets" Sdk="Microsoft.NET.Sdk" />

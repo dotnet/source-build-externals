@@ -12,16 +12,25 @@
     <NewtonsoftJsonKeyFilePath>$(KeysDir)Newtonsoft.Json.snk</NewtonsoftJsonKeyFilePath>
     <NewtonsoftJsonDirectory>$(ProjectDirectory)/Src/Newtonsoft.Json/</NewtonsoftJsonDirectory>
     <NewtonsoftJsonProjectPath>$(NewtonsoftJsonDirectory)Newtonsoft.Json.csproj</NewtonsoftJsonProjectPath>
-    <DotnetToolCommandArguments>"/p:DotnetOnly=true" "/p:Configuration=$(Configuration)" "/p:AssemblyOriginatorKeyFile=$(NewtonsoftJsonKeyFilePath)" "/p:SignAssembly=true" "/p:PublicSign=true" "/p:TreatWarningsAsErrors=false" "/p:AdditionalConstants=SIGNED"</DotnetToolCommandArguments>
-    <BuildCommand>$(DotnetToolCommand) build $(NewtonsoftJsonProjectPath) /bl:build.binlog $(DotnetToolCommandArguments)</BuildCommand>
-    <BuildPackagesCommand>$(DotnetToolCommand) pack $(NewtonsoftJsonProjectPath) /bl:pack.binlog $(DotnetToolCommandArguments)</BuildPackagesCommand>
-    <CleanCommand>$(DotnetToolCommand) clean $(NewtonsoftJsonProjectPath) $(DotnetToolCommandArguments)</CleanCommand>
+
+    <DotnetToolCommandArgs>/p:DotnetOnly=true</DotnetToolCommandArgs>
+    <DotnetToolCommandArgs>$(DotnetToolCommandArgs) /p:Configuration=$(Configuration)</DotnetToolCommandArgs>
+    <DotnetToolCommandArgs>$(DotnetToolCommandArgs) /p:AssemblyOriginatorKeyFile=$(NewtonsoftJsonKeyFilePath)</DotnetToolCommandArgs>
+    <DotnetToolCommandArgs>$(DotnetToolCommandArgs) /p:SignAssembly=true</DotnetToolCommandArgs>
+    <DotnetToolCommandArgs>$(DotnetToolCommandArgs) /p:PublicSign=true</DotnetToolCommandArgs>
+    <DotnetToolCommandArgs>$(DotnetToolCommandArgs) /p:TreatWarningsAsErrors=false</DotnetToolCommandArgs>
+    <DotnetToolCommandArgs>$(DotnetToolCommandArgs) /p:AdditionalConstants=SIGNED</DotnetToolCommandArgs>
+
+    <BuildCommand>$(DotnetToolCommand) build $(NewtonsoftJsonProjectPath) /bl:build.binlog $(DotnetToolCommandArgs)</BuildCommand>
+    <BuildPackagesCommand>$(DotnetToolCommand) pack $(NewtonsoftJsonProjectPath) /bl:pack.binlog $(DotnetToolCommandArgs)</BuildPackagesCommand>
+    <CleanCommand>$(DotnetToolCommand) clean $(NewtonsoftJsonProjectPath) $(DotnetToolCommandArgs)</CleanCommand>
+
     <PackagesOutput>$(NewtonsoftJsonDirectory)bin/$(Configuration)/</PackagesOutput>
     <DeterministicBuildOptOut>true</DeterministicBuildOptOut>
   </PropertyGroup>
 
   <Target Name="RepoRestore" BeforeTargets="Build" DependsOnTargets="UpdateNuGetConfig">
-    <Exec Command="$(DotnetToolCommand) restore $(NewtonsoftJsonProjectPath) $(DotnetToolCommandArguments) /v:$(LogVerbosity) /bl:restore.binlog $(RedirectRepoOutputToLog)"
+    <Exec Command="$(DotnetToolCommand) restore $(NewtonsoftJsonProjectPath) $(DotnetToolCommandArgs) /v:$(LogVerbosity) /bl:restore.binlog $(RedirectRepoOutputToLog)"
           WorkingDirectory="$(ProjectDirectory)"
           EnvironmentVariables="@(EnvironmentVariables)"
           IgnoreStandardErrorWarningFormat="true" />

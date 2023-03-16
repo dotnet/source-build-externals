@@ -3,8 +3,6 @@
 
   <PropertyGroup>
     <PackagesOutput>$(ProjectDirectory)/src/Valleysoft.DockerCredsProvider/bin/$(Configuration)/</PackagesOutput>
-    <RepoApiImplemented>false</RepoApiImplemented>
-    <DeterministicBuildOptOut>true</DeterministicBuildOptOut>
     <DockerCredsProviderPackageVersion>2.1.0</DockerCredsProviderPackageVersion>
   </PropertyGroup>
 

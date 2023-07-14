@@ -14,6 +14,8 @@
       <MicrosoftIdentityModelJsonWebTokensProject>$(ProjectDirectory)src/Microsoft.IdentityModel.JsonWebTokens/Microsoft.IdentityModel.JsonWebTokens.csproj</MicrosoftIdentityModelJsonWebTokensProject>
       <MicrosoftIdentityModelAbstractionsProject>$(ProjectDirectory)src/Microsoft.IdentityModel.Abstractions/Microsoft.IdentityModel.Abstractions.csproj</MicrosoftIdentityModelAbstractionsProject>
       <MicrosoftIdentityModelLoggingProject>$(ProjectDirectory)src/Microsoft.IdentityModel.Logging/Microsoft.IdentityModel.Logging.csproj</MicrosoftIdentityModelLoggingProject>
+      <MicrosoftIdentityModelProtocolsOpenIdConnectProject>$(ProjectDirectory)src/Microsoft.IdentityModel.Protocols.OpenIdConnect/Microsoft.IdentityModel.Protocols.OpenIdConnect.csproj</MicrosoftIdentityModelProtocolsOpenIdConnectProject>
+      <MicrosoftIdentityModelProtocolsWsFederationProject>$(ProjectDirectory)src/Microsoft.IdentityModel.Protocols.WsFederation/Microsoft.IdentityModel.Protocols.WsFederation.csproj</MicrosoftIdentityModelProtocolsWsFederationProject>
 
       <BuildCommandArgs>$(BuildCommandArgs) /p:Configuration=$(Configuration)</BuildCommandArgs>
       <BuildCommandArgs>$(BuildCommandArgs) /p:MicrosoftSourceLinkGitHubVersion=$(MicrosoftSourceLinkGitHubVersion)</BuildCommandArgs>
@@ -23,16 +25,6 @@
 
       <PackCommandArgs>$(BuildCommandArgs) --output $(ProjectDirectory)pack</PackCommandArgs>
     </PropertyGroup>
-
-    <Exec Command="$(DotnetToolCommand) restore /bl:restore.binlog $(SystemIdentityModelTokensJwtProject) $(BuildCommandArgs)"
-          EnvironmentVariables="@(EnvironmentVariables)"
-          WorkingDirectory="$(ProjectDirectory)"
-          IgnoreStandardErrorWarningFormat="true" />
-
-    <Exec Command="$(DotnetToolCommand) build /bl:build.binlog $(SystemIdentityModelTokensJwtProject) $(BuildCommandArgs)"
-          EnvironmentVariables="@(EnvironmentVariables)"
-          WorkingDirectory="$(ProjectDirectory)"
-          IgnoreStandardErrorWarningFormat="true" />
 
     <Exec Command="$(DotnetToolCommand) pack /bl:pack_TokensJwt.binlog $(SystemIdentityModelTokensJwtProject) $(PackCommandArgs)"
           EnvironmentVariables="@(EnvironmentVariables)"
@@ -55,6 +47,16 @@
           IgnoreStandardErrorWarningFormat="true" />
 
     <Exec Command="$(DotnetToolCommand) pack /bl:pack_Logging.binlog $(MicrosoftIdentityModelLoggingProject) $(PackCommandArgs)"
+          EnvironmentVariables="@(EnvironmentVariables)"
+          WorkingDirectory="$(ProjectDirectory)"
+          IgnoreStandardErrorWarningFormat="true" />
+
+    <Exec Command="$(DotnetToolCommand) pack /bl:pack_OpenIdConnect.binlog $(MicrosoftIdentityModelProtocolsOpenIdConnectProject) $(PackCommandArgs)"
+          EnvironmentVariables="@(EnvironmentVariables)"
+          WorkingDirectory="$(ProjectDirectory)"
+          IgnoreStandardErrorWarningFormat="true" />
+
+    <Exec Command="$(DotnetToolCommand) pack /bl:pack_WsFederation.binlog $(MicrosoftIdentityModelProtocolsWsFederationProject) $(PackCommandArgs)"
           EnvironmentVariables="@(EnvironmentVariables)"
           WorkingDirectory="$(ProjectDirectory)"
           IgnoreStandardErrorWarningFormat="true" />

@@ -4,27 +4,22 @@ Date: Wed, 13 July 2022 17:42:31 +0000
 Subject: [PATCH] Fix dependency for source build
 
 ---
- build/common.props                                                                                                 |  1 -
- build/dependencies.props                                                                                           |  8 ++++----
- build/targets.props                                                                                                |  4 ++--
- build/targetsTest.props                                                                                            |  4 ++--
- buildConfiguration.xml                                                                                             |  2 +-
- src/Microsoft.IdentityModel.Abstractions/Microsoft.IdentityModel.Abstractions.csproj                               |  6 ------
- src/Microsoft.IdentityModel.JsonWebTokens/Microsoft.IdentityModel.JsonWebTokens.csproj                             |  7 -------
- src/Microsoft.IdentityModel.KeyVaultExtensions/Microsoft.IdentityModel.KeyVaultExtensions.csproj                   |  4 ----
- src/Microsoft.IdentityModel.Logging/Microsoft.IdentityModel.Logging.csproj                                         |  7 -------
- src/Microsoft.IdentityModel.LoggingExtensions/Microsoft.IdentityModel.LoggingExtensions.csproj                     |  7 -------
- src/Microsoft.IdentityModel.ManagedKeyVaultSecurityKey/Microsoft.IdentityModel.ManagedKeyVaultSecurityKey.csproj   | 10 ----------
- src/Microsoft.IdentityModel.Protocols.OpenIdConnect/Microsoft.IdentityModel.Protocols.OpenIdConnect.csproj         |  7 -------
- src/Microsoft.IdentityModel.Protocols.SignedHttpRequest/Microsoft.IdentityModel.Protocols.SignedHttpRequest.csproj |  7 -------
- src/Microsoft.IdentityModel.Protocols.WsFederation/Microsoft.IdentityModel.Protocols.WsFederation.csproj           |  7 -------
- src/Microsoft.IdentityModel.Protocols/Microsoft.IdentityModel.Protocols.csproj                                     |  7 -------
- src/Microsoft.IdentityModel.Tokens.Saml/Microsoft.IdentityModel.Tokens.Saml.csproj                                 |  7 -------
- src/Microsoft.IdentityModel.Tokens/Microsoft.IdentityModel.Tokens.csproj                                           |  6 ------
- src/Microsoft.IdentityModel.Validators/Microsoft.IdentityModel.Validators.csproj                                   |  7 -------
- src/Microsoft.IdentityModel.Xml/Microsoft.IdentityModel.Xml.csproj                                                 |  7 -------
- src/System.IdentityModel.Tokens.Jwt/System.IdentityModel.Tokens.Jwt.csproj                                         |  7 -------
- 20 files changed, 9 insertions(+), 113 deletions(-)
+ build/common.props                                                                                         | 1 -
+ build/dependencies.props                                                                                   | 8 ++++----
+ build/targets.props                                                                                        | 4 ++--
+ buildConfiguration.xml                                                                                     | 2 +-
+ src/Microsoft.IdentityModel.Abstractions/Microsoft.IdentityModel.Abstractions.csproj                       | 6 ------
+ src/Microsoft.IdentityModel.JsonWebTokens/Microsoft.IdentityModel.JsonWebTokens.csproj                     | 7 -------
+ src/Microsoft.IdentityModel.Logging/Microsoft.IdentityModel.Logging.csproj                                 | 7 -------
+ src/Microsoft.IdentityModel.Protocols.OpenIdConnect/Microsoft.IdentityModel.Protocols.OpenIdConnect.csproj | 7 -------
+ src/Microsoft.IdentityModel.Protocols.WsFederation/Microsoft.IdentityModel.Protocols.WsFederation.csproj   | 7 -------
+ src/Microsoft.IdentityModel.Protocols/Microsoft.IdentityModel.Protocols.csproj                             | 7 -------
+ src/Microsoft.IdentityModel.Tokens.Saml/Microsoft.IdentityModel.Tokens.Saml.csproj                         | 7 -------
+ src/Microsoft.IdentityModel.Tokens/Microsoft.IdentityModel.Tokens.csproj                                   | 6 ------
+ src/Microsoft.IdentityModel.Validators/Microsoft.IdentityModel.Validators.csproj                           | 7 -------
+ src/Microsoft.IdentityModel.Xml/Microsoft.IdentityModel.Xml.csproj                                         | 7 -------
+ src/System.IdentityModel.Tokens.Jwt/System.IdentityModel.Tokens.Jwt.csproj                                 | 7 -------
+ 15 files changed, 7 insertions(+), 83 deletions(-)
 
 diff --git a/build/common.props b/build/common.props
 index de06ad9b..66fd93fa 100644
@@ -76,20 +71,6 @@ index f020b59b..934aae74 100644
      <SrcStandardTargets>netstandard2.0</SrcStandardTargets>
    </PropertyGroup>
  </Project>
-diff --git a/build/targetsTest.props b/build/targetsTest.props
-index a635db69..35910de1 100644
---- a/build/targetsTest.props
-+++ b/build/targetsTest.props
-@@ -1,7 +1,7 @@
- <Project>
-   <PropertyGroup>
--    <TestTargets Condition="'$(TargetNet8)' == 'True'">net461;net462;net472;netcoreapp2.1;net6.0;net8.0</TestTargets>
--    <TestTargets Condition="'$(TargetNet8)' != 'True'">net461;net462;net472;netcoreapp2.1;net6.0</TestTargets>
-+    <TestTargets Condition="'$(TargetNet8)' == 'True'">netcoreapp2.1;net6.0;net8.0</TestTargets>
-+    <TestTargets Condition="'$(TargetNet8)' != 'True'">netcoreapp2.1;net6.0</TestTargets>
-     <TestOnlyCoreTargets>netcoreapp2.1</TestOnlyCoreTargets>
-   </PropertyGroup>
- </Project>
 diff --git a/buildConfiguration.xml b/buildConfiguration.xml
 index f0f7011a..69e2319b 100644
 --- a/buildConfiguration.xml
@@ -137,21 +118,6 @@ index d502da51..bd96a112 100644
    <ItemGroup>
      <ProjectReference Include="..\Microsoft.IdentityModel.Tokens\Microsoft.IdentityModel.Tokens.csproj" />
    </ItemGroup>
-diff --git a/src/Microsoft.IdentityModel.KeyVaultExtensions/Microsoft.IdentityModel.KeyVaultExtensions.csproj b/src/Microsoft.IdentityModel.KeyVaultExtensions/Microsoft.IdentityModel.KeyVaultExtensions.csproj
-index da422734..5514561f 100644
---- a/src/Microsoft.IdentityModel.KeyVaultExtensions/Microsoft.IdentityModel.KeyVaultExtensions.csproj
-+++ b/src/Microsoft.IdentityModel.KeyVaultExtensions/Microsoft.IdentityModel.KeyVaultExtensions.csproj
-@@ -20,10 +20,6 @@
- 
-   <ItemGroup>
-     <PackageReference Include="Microsoft.Azure.KeyVault" Version="$(MicrosoftAzureKeyVaultVersion)" />
--    <PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="3.0.0">
--      <PrivateAssets>all</PrivateAssets>
--      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
--    </PackageReference>
-     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
-   </ItemGroup>
- 
 diff --git a/src/Microsoft.IdentityModel.Logging/Microsoft.IdentityModel.Logging.csproj b/src/Microsoft.IdentityModel.Logging/Microsoft.IdentityModel.Logging.csproj
 index 8dc4ec39..136dabf3 100644
 --- a/src/Microsoft.IdentityModel.Logging/Microsoft.IdentityModel.Logging.csproj
@@ -169,45 +135,6 @@ index 8dc4ec39..136dabf3 100644
 -
    <ItemGroup>
      <ProjectReference Include="..\Microsoft.IdentityModel.Abstractions\Microsoft.IdentityModel.Abstractions.csproj" />
-   </ItemGroup>
-diff --git a/src/Microsoft.IdentityModel.LoggingExtensions/Microsoft.IdentityModel.LoggingExtensions.csproj b/src/Microsoft.IdentityModel.LoggingExtensions/Microsoft.IdentityModel.LoggingExtensions.csproj
-index 81381568..c8ca22dc 100644
---- a/src/Microsoft.IdentityModel.LoggingExtensions/Microsoft.IdentityModel.LoggingExtensions.csproj
-+++ b/src/Microsoft.IdentityModel.LoggingExtensions/Microsoft.IdentityModel.LoggingExtensions.csproj
-@@ -16,13 +16,6 @@
-     <DebugSymbols>true</DebugSymbols>
-   </PropertyGroup>
- 
--  <ItemGroup>
--    <PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="3.0.0">
--      <PrivateAssets>all</PrivateAssets>
--      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
--    </PackageReference>
--  </ItemGroup>
--
-   <ItemGroup>
-     <ProjectReference Include="..\Microsoft.IdentityModel.Abstractions\Microsoft.IdentityModel.Abstractions.csproj" />
-   </ItemGroup>
-diff --git a/src/Microsoft.IdentityModel.ManagedKeyVaultSecurityKey/Microsoft.IdentityModel.ManagedKeyVaultSecurityKey.csproj b/src/Microsoft.IdentityModel.ManagedKeyVaultSecurityKey/Microsoft.IdentityModel.ManagedKeyVaultSecurityKey.csproj
-index b7ce4518..96563774 100644
---- a/src/Microsoft.IdentityModel.ManagedKeyVaultSecurityKey/Microsoft.IdentityModel.ManagedKeyVaultSecurityKey.csproj
-+++ b/src/Microsoft.IdentityModel.ManagedKeyVaultSecurityKey/Microsoft.IdentityModel.ManagedKeyVaultSecurityKey.csproj
-@@ -18,16 +18,6 @@
-     <DebugSymbols>true</DebugSymbols>
-   </PropertyGroup>
- 
--  <ItemGroup>
--    <PackageReference Include="Microsoft.Azure.KeyVault" Version="$(MicrosoftAzureKeyVaultVersion)" />
--    <PackageReference Include="Microsoft.Azure.Services.AppAuthentication" Version="$(MicrosoftAzureServicesAppAuthenticationVersion)" />
--    <PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="3.0.0">
--      <PrivateAssets>all</PrivateAssets>
--      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
--    </PackageReference>
--    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
--  </ItemGroup>
--
-   <ItemGroup>
-     <ProjectReference Include="..\Microsoft.IdentityModel.KeyVaultExtensions\Microsoft.IdentityModel.KeyVaultExtensions.csproj" />
    </ItemGroup>
 diff --git a/src/Microsoft.IdentityModel.Protocols.OpenIdConnect/Microsoft.IdentityModel.Protocols.OpenIdConnect.csproj b/src/Microsoft.IdentityModel.Protocols.OpenIdConnect/Microsoft.IdentityModel.Protocols.OpenIdConnect.csproj
 index 8d5887be..463ac14b 100644
@@ -227,24 +154,6 @@ index 8d5887be..463ac14b 100644
    <ItemGroup>
      <ProjectReference Include="..\Microsoft.IdentityModel.Protocols\Microsoft.IdentityModel.Protocols.csproj" />
      <ProjectReference Include="..\System.IdentityModel.Tokens.Jwt\System.IdentityModel.Tokens.Jwt.csproj" />
-diff --git a/src/Microsoft.IdentityModel.Protocols.SignedHttpRequest/Microsoft.IdentityModel.Protocols.SignedHttpRequest.csproj b/src/Microsoft.IdentityModel.Protocols.SignedHttpRequest/Microsoft.IdentityModel.Protocols.SignedHttpRequest.csproj
-index 8fe3e1d4..23a8cb92 100644
---- a/src/Microsoft.IdentityModel.Protocols.SignedHttpRequest/Microsoft.IdentityModel.Protocols.SignedHttpRequest.csproj
-+++ b/src/Microsoft.IdentityModel.Protocols.SignedHttpRequest/Microsoft.IdentityModel.Protocols.SignedHttpRequest.csproj
-@@ -15,13 +15,6 @@
-     <DebugSymbols>true</DebugSymbols>
-   </PropertyGroup>
- 
--  <ItemGroup>
--    <PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="3.0.0">
--      <PrivateAssets>all</PrivateAssets>
--      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
--    </PackageReference>
--  </ItemGroup>
--
-   <ItemGroup>
-     <ProjectReference Include="..\..\src\Microsoft.IdentityModel.JsonWebTokens\Microsoft.IdentityModel.JsonWebTokens.csproj" />
-     <ProjectReference Include="..\..\src\Microsoft.IdentityModel.Protocols\Microsoft.IdentityModel.Protocols.csproj" />
 diff --git a/src/Microsoft.IdentityModel.Protocols.WsFederation/Microsoft.IdentityModel.Protocols.WsFederation.csproj b/src/Microsoft.IdentityModel.Protocols.WsFederation/Microsoft.IdentityModel.Protocols.WsFederation.csproj
 index 66f7e921..c406dea1 100644
 --- a/src/Microsoft.IdentityModel.Protocols.WsFederation/Microsoft.IdentityModel.Protocols.WsFederation.csproj

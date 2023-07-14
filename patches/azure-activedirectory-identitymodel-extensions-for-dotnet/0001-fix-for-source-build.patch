@@ -4,27 +4,27 @@ Date: Wed, 13 July 2022 17:42:31 +0000
 Subject: [PATCH] Fix dependency for source build
 
 ---
- build/common.props                                                                                                 |  3 +--
+ build/common.props                                                                                                 |  1 -
  build/dependencies.props                                                                                           |  8 ++++----
  build/targets.props                                                                                                |  4 ++--
  build/targetsTest.props                                                                                            |  4 ++--
  buildConfiguration.xml                                                                                             |  2 +-
  src/Microsoft.IdentityModel.Abstractions/Microsoft.IdentityModel.Abstractions.csproj                               |  6 ------
- src/Microsoft.IdentityModel.JsonWebTokens/Microsoft.IdentityModel.JsonWebTokens.csproj                             |  9 +--------
+ src/Microsoft.IdentityModel.JsonWebTokens/Microsoft.IdentityModel.JsonWebTokens.csproj                             |  7 -------
  src/Microsoft.IdentityModel.KeyVaultExtensions/Microsoft.IdentityModel.KeyVaultExtensions.csproj                   |  4 ----
- src/Microsoft.IdentityModel.Logging/Microsoft.IdentityModel.Logging.csproj                                         |  9 +--------
+ src/Microsoft.IdentityModel.Logging/Microsoft.IdentityModel.Logging.csproj                                         |  7 -------
  src/Microsoft.IdentityModel.LoggingExtensions/Microsoft.IdentityModel.LoggingExtensions.csproj                     |  7 -------
- src/Microsoft.IdentityModel.ManagedKeyVaultSecurityKey/Microsoft.IdentityModel.ManagedKeyVaultSecurityKey.csproj   | 14 ++------------
+ src/Microsoft.IdentityModel.ManagedKeyVaultSecurityKey/Microsoft.IdentityModel.ManagedKeyVaultSecurityKey.csproj   | 10 ----------
  src/Microsoft.IdentityModel.Protocols.OpenIdConnect/Microsoft.IdentityModel.Protocols.OpenIdConnect.csproj         |  7 -------
  src/Microsoft.IdentityModel.Protocols.SignedHttpRequest/Microsoft.IdentityModel.Protocols.SignedHttpRequest.csproj |  7 -------
  src/Microsoft.IdentityModel.Protocols.WsFederation/Microsoft.IdentityModel.Protocols.WsFederation.csproj           |  7 -------
  src/Microsoft.IdentityModel.Protocols/Microsoft.IdentityModel.Protocols.csproj                                     |  7 -------
  src/Microsoft.IdentityModel.Tokens.Saml/Microsoft.IdentityModel.Tokens.Saml.csproj                                 |  7 -------
- src/Microsoft.IdentityModel.Tokens/Microsoft.IdentityModel.Tokens.csproj                                           |  8 +-------
+ src/Microsoft.IdentityModel.Tokens/Microsoft.IdentityModel.Tokens.csproj                                           |  6 ------
  src/Microsoft.IdentityModel.Validators/Microsoft.IdentityModel.Validators.csproj                                   |  7 -------
  src/Microsoft.IdentityModel.Xml/Microsoft.IdentityModel.Xml.csproj                                                 |  7 -------
  src/System.IdentityModel.Tokens.Jwt/System.IdentityModel.Tokens.Jwt.csproj                                         |  7 -------
- 20 files changed, 15 insertions(+), 119 deletions(-)
+ 20 files changed, 9 insertions(+), 113 deletions(-)
 
 diff --git a/build/common.props b/build/common.props
 index de06ad9b..66fd93fa 100644
@@ -36,15 +36,6 @@ index de06ad9b..66fd93fa 100644
    <Import Project="dependencies.props" />
    <Import Project="targets.props" />
    <Import Project="version.props" />
-@@ -42,7 +41,7 @@
-     <NoWarn>$(NoWarn);SYSLIB0050</NoWarn>
-     <NoWarn>$(NoWarn);SYSLIB0051</NoWarn>
-   </PropertyGroup>
--  
-+
-   <ItemGroup Condition="'$(TargetFramework)' != 'net8.0'">
-     <PackageReference Include="Microsoft.SourceLink.GitHub" Version="$(MicrosoftSourceLinkGitHubVersion)" PrivateAssets="All"/>
-   </ItemGroup>
 diff --git a/build/dependencies.props b/build/dependencies.props
 index 3ecb2744..4164d4a0 100644
 --- a/build/dependencies.props
@@ -132,7 +123,7 @@ diff --git a/src/Microsoft.IdentityModel.JsonWebTokens/Microsoft.IdentityModel.J
 index d502da51..bd96a112 100644
 --- a/src/Microsoft.IdentityModel.JsonWebTokens/Microsoft.IdentityModel.JsonWebTokens.csproj
 +++ b/src/Microsoft.IdentityModel.JsonWebTokens/Microsoft.IdentityModel.JsonWebTokens.csproj
-@@ -16,20 +16,13 @@
+@@ -16,13 +16,6 @@
      <DebugSymbols>true</DebugSymbols>
    </PropertyGroup>
  
@@ -146,14 +137,6 @@ index d502da51..bd96a112 100644
    <ItemGroup>
      <ProjectReference Include="..\Microsoft.IdentityModel.Tokens\Microsoft.IdentityModel.Tokens.csproj" />
    </ItemGroup>
- 
-   <ItemGroup Condition=" '$(TargetFramework)' == 'net461' Or '$(TargetFramework)' == 'net462' Or '$(TargetFramework)' == 'net472' Or '$(TargetFramework)' == 'netstandard2.0' Or '$(TargetFramework)' == 'net6.0' Or '$(TargetFramework)' == 'net8.0'">
-     <PackageReference Include="System.Text.Encoding" Version="$(SystemTextEncoding)" />
--	<PackageReference Include="System.Text.Encodings.Web" Version="$(SystemTextEncodingsWeb)" />
-+	  <PackageReference Include="System.Text.Encodings.Web" Version="$(SystemTextEncodingsWeb)" />
-     <PackageReference Include="System.Text.Json" Version="$(SystemTextJson)" />
-   </ItemGroup>
- 
 diff --git a/src/Microsoft.IdentityModel.KeyVaultExtensions/Microsoft.IdentityModel.KeyVaultExtensions.csproj b/src/Microsoft.IdentityModel.KeyVaultExtensions/Microsoft.IdentityModel.KeyVaultExtensions.csproj
 index da422734..5514561f 100644
 --- a/src/Microsoft.IdentityModel.KeyVaultExtensions/Microsoft.IdentityModel.KeyVaultExtensions.csproj
@@ -173,13 +156,7 @@ diff --git a/src/Microsoft.IdentityModel.Logging/Microsoft.IdentityModel.Logging
 index 8dc4ec39..136dabf3 100644
 --- a/src/Microsoft.IdentityModel.Logging/Microsoft.IdentityModel.Logging.csproj
 +++ b/src/Microsoft.IdentityModel.Logging/Microsoft.IdentityModel.Logging.csproj
-@@ -20,18 +20,11 @@
-     <Compile Include="..\Common\TrimmingAttributes.cs" LinkBase="Common"
-              Condition="'$(TargetFrameworkIdentifier)' != '.NETCoreApp'" />
-   </ItemGroup>
--  
-+
-   <ItemGroup Condition=" '$(TargetFramework)' == 'net461' Or '$(TargetFramework)' == 'net462' Or '$(TargetFramework)' == 'net472'">
+@@ -25,13 +25,6 @@
      <Reference Include="System.Net.Http" />
    </ItemGroup>
  
@@ -215,16 +192,7 @@ diff --git a/src/Microsoft.IdentityModel.ManagedKeyVaultSecurityKey/Microsoft.Id
 index b7ce4518..96563774 100644
 --- a/src/Microsoft.IdentityModel.ManagedKeyVaultSecurityKey/Microsoft.IdentityModel.ManagedKeyVaultSecurityKey.csproj
 +++ b/src/Microsoft.IdentityModel.ManagedKeyVaultSecurityKey/Microsoft.IdentityModel.ManagedKeyVaultSecurityKey.csproj
-@@ -4,7 +4,7 @@
- 
-   <PropertyGroup>
-     <AssemblyName>Microsoft.IdentityModel.ManagedKeyVaultSecurityKey</AssemblyName>
--    <Description>Includes types that provide support for signing and encrypting tokens with Azure Key Vault for 
-+    <Description>Includes types that provide support for signing and encrypting tokens with Azure Key Vault for
-     Applications that are using Managed identities for Azure resources.</Description>
-     <GenerateDocumentationFile>true</GenerateDocumentationFile>
-     <LangVersion>latest</LangVersion>
-@@ -18,18 +18,8 @@
+@@ -18,16 +18,6 @@
      <DebugSymbols>true</DebugSymbols>
    </PropertyGroup>
  
@@ -241,10 +209,6 @@ index b7ce4518..96563774 100644
    <ItemGroup>
      <ProjectReference Include="..\Microsoft.IdentityModel.KeyVaultExtensions\Microsoft.IdentityModel.KeyVaultExtensions.csproj" />
    </ItemGroup>
- 
--</Project>
-\ No newline at end of file
-+</Project>
 diff --git a/src/Microsoft.IdentityModel.Protocols.OpenIdConnect/Microsoft.IdentityModel.Protocols.OpenIdConnect.csproj b/src/Microsoft.IdentityModel.Protocols.OpenIdConnect/Microsoft.IdentityModel.Protocols.OpenIdConnect.csproj
 index 8d5887be..463ac14b 100644
 --- a/src/Microsoft.IdentityModel.Protocols.OpenIdConnect/Microsoft.IdentityModel.Protocols.OpenIdConnect.csproj
@@ -339,15 +303,6 @@ diff --git a/src/Microsoft.IdentityModel.Tokens/Microsoft.IdentityModel.Tokens.c
 index 1010bd07..999782d3 100644
 --- a/src/Microsoft.IdentityModel.Tokens/Microsoft.IdentityModel.Tokens.csproj
 +++ b/src/Microsoft.IdentityModel.Tokens/Microsoft.IdentityModel.Tokens.csproj
-@@ -11,7 +11,7 @@
-     <LangVersion>latest</LangVersion>
-     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-   </PropertyGroup>
--  
-+
-   <PropertyGroup Condition=" '$(TargetFramework)' == 'net461' Or '$(TargetFramework)' == 'net462' Or '$(TargetFramework)' == 'net472'">
-     <DefineConstants>$(DefineConstants);TRACE;DESKTOP;HAVE_ADO_NET;HAVE_APP_DOMAIN;HAVE_ASYNC;HAVE_BIG_INTEGER;HAVE_BINARY_FORMATTER;HAVE_BINARY_SERIALIZATION;HAVE_BINARY_EXCEPTION_SERIALIZATION;HAVE_CAS;HAVE_CHAR_TO_LOWER_WITH_CULTURE;HAVE_CHAR_TO_STRING_WITH_CULTURE;HAVE_COM_ATTRIBUTES;HAVE_COMPONENT_MODEL;HAVE_CONCURRENT_COLLECTIONS;HAVE_COVARIANT_GENERICS;HAVE_DATA_CONTRACTS;HAVE_DATE_TIME_OFFSET;HAVE_DB_NULL_TYPE_CODE;HAVE_DYNAMIC;HAVE_EMPTY_TYPES;HAVE_ENTITY_FRAMEWORK;HAVE_EXPRESSIONS;HAVE_FAST_REVERSE;HAVE_FSHARP_TYPES;HAVE_FULL_REFLECTION;HAVE_GUID_TRY_PARSE;HAVE_HASH_SET;HAVE_ICLONEABLE;HAVE_ICONVERTIBLE;HAVE_IGNORE_DATA_MEMBER_ATTRIBUTE;HAVE_INOTIFY_COLLECTION_CHANGED;HAVE_INOTIFY_PROPERTY_CHANGING;HAVE_ISET;HAVE_LINQ;HAVE_MEMORY_BARRIER;HAVE_METHOD_IMPL_ATTRIBUTE;HAVE_NON_SERIALIZED_ATTRIBUTE;HAVE_READ_ONLY_COLLECTIONS;HAVE_REFLECTION_EMIT;HAVE_REGEX_TIMEOUTS;HAVE_SECURITY_SAFE_CRITICAL_ATTRIBUTE;HAVE_SERIALIZATION_BINDER_BIND_TO_NAME;HAVE_STREAM_READER_WRITER_CLOSE;HAVE_STRING_JOIN_WITH_ENUMERABLE;HAVE_TIME_SPAN_PARSE_WITH_CULTURE;HAVE_TIME_SPAN_TO_STRING_WITH_CULTURE;HAVE_TIME_ZONE_INFO;HAVE_TRACE_WRITER;HAVE_TYPE_DESCRIPTOR;HAVE_UNICODE_SURROGATE_DETECTION;HAVE_VARIANT_TYPE_PARAMETERS;HAVE_VERSION_TRY_PARSE;HAVE_XLINQ;HAVE_XML_DOCUMENT;HAVE_XML_DOCUMENT_TYPE;HAVE_CONCURRENT_DICTIONARY;$(AdditionalConstants)</DefineConstants>
-   </PropertyGroup>
 @@ -51,11 +51,5 @@
      <PackageReference Include="System.Text.Json" Version="$(SystemTextJson)" />
    </ItemGroup>

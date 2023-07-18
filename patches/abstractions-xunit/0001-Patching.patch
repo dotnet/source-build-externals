@@ -1,0 +1,48 @@
+From be553bc779d73981cde84753edd299cdce5e2007 Mon Sep 17 00:00:00 2001
+From: Matt Mitchell <mmitche@microsoft.com>
+Date: Fri, 16 Jun 2023 11:56:50 -0700
+Subject: [PATCH] Patching
+
+---
+ global.json                                      |  6 ------
+ src/xunit.abstractions/xunit.abstractions.csproj | 11 +++--------
+ 2 files changed, 3 insertions(+), 14 deletions(-)
+ delete mode 100644 global.json
+
+diff --git a/global.json b/global.json
+deleted file mode 100644
+index 9f78419..0000000
+--- a/global.json
++++ /dev/null
+@@ -1,6 +0,0 @@
+-{
+-  "sdk": {
+-    "version": "6.0.0",
+-    "rollForward": "latestMinor"
+-  }
+-}
+diff --git a/src/xunit.abstractions/xunit.abstractions.csproj b/src/xunit.abstractions/xunit.abstractions.csproj
+index fa4cf23..5d61131 100644
+--- a/src/xunit.abstractions/xunit.abstractions.csproj
++++ b/src/xunit.abstractions/xunit.abstractions.csproj
+@@ -9,14 +9,9 @@
+     <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
+     <GenerateAssemblyTitleAttribute>false</GenerateAssemblyTitleAttribute>
+     <GenerateAssemblyVersionAttribute>false</GenerateAssemblyVersionAttribute>
+-    <TargetFrameworks>net35;netstandard1.0</TargetFrameworks>
++    <Packable>true</Packable>
++    <Version>$(PackageVersion)</Version>
++    <TargetFrameworks>netstandard2.0</TargetFrameworks>
+   </PropertyGroup>
+ 
+-  <ItemGroup>
+-    <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.2" Condition=" '$(TargetFrameworkIdentifier)' == '.NETFramework' ">
+-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+-      <PrivateAssets>all</PrivateAssets>
+-    </PackageReference>
+-  </ItemGroup>
+-
+ </Project>
+-- 
+2.41.0.windows.1
+

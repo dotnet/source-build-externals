@@ -1,11 +1,11 @@
-From c2c4cd9f05cddd7fd03e80f87c894d7a10a5152e Mon Sep 17 00:00:00 2001
+From cf6cbdbed67c5dcc36892489ab80778e4cd6033a Mon Sep 17 00:00:00 2001
 From: Matt Mitchell <mmitche@microsoft.com>
-Date: Wed, 12 Jul 2023 09:33:44 -0700
+Date: Tue, 18 Jul 2023 12:32:15 -0700
 Subject: [PATCH] Patching
 
 ---
  global.json                                   |  5 ---
- src/Directory.Build.props                     |  9 ++--
+ src/Directory.Build.props                     | 11 ++---
  src/Directory.Build.targets                   | 21 ---------
  src/xunit.assert/xunit.assert.csproj          | 13 +-----
  src/xunit.core/xunit.core.csproj              |  2 +-
@@ -16,7 +16,7 @@ Subject: [PATCH] Patching
  src/xunit.runner.utility.nuspec               | 43 ++-----------------
  .../xunit.runner.utility.csproj               | 12 ++----
  xunit-notests.slnf                            | 10 +++++
- 12 files changed, 34 insertions(+), 118 deletions(-)
+ 12 files changed, 33 insertions(+), 121 deletions(-)
  delete mode 100644 global.json
  create mode 100644 xunit-notests.slnf
 
@@ -32,10 +32,10 @@ index ebd1966e..00000000
 -  }
 -}
 diff --git a/src/Directory.Build.props b/src/Directory.Build.props
-index 95cabfab..0970f6e4 100644
+index 95cabfab..42a4ee85 100644
 --- a/src/Directory.Build.props
 +++ b/src/Directory.Build.props
-@@ -22,6 +22,9 @@
+@@ -22,18 +22,13 @@
      <TargetPlatformMinVersion Condition=" '$(TargetFramework)' == 'uap10.0' ">10.0.16299.0</TargetPlatformMinVersion>
      <TargetPlatformVersion Condition=" '$(TargetFramework)' == 'uap10.0' ">10.0.19041.0</TargetPlatformVersion>
      <WarningsAsErrors>true</WarningsAsErrors>
@@ -45,18 +45,17 @@ index 95cabfab..0970f6e4 100644
    </PropertyGroup>
  
    <ItemGroup>
-@@ -29,11 +32,7 @@
+     <Compile Include="$(MSBuildThisFileDirectory)common\GlobalAssemblyInfo.cs" LinkBase="Properties" />
    </ItemGroup>
  
-   <ItemGroup>
+-  <ItemGroup>
 -    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.1" PrivateAssets="all" />
 -    <PackageReference Include="Nerdbank.GitVersioning" Version="3.5.108">
 -      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 -      <PrivateAssets>all</PrivateAssets>
 -    </PackageReference>
-+    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="$(MicrosoftSourceLinkGitHubVersion)" PrivateAssets="all" />
-   </ItemGroup>
- 
+-  </ItemGroup>
+-
  </Project>
 diff --git a/src/Directory.Build.targets b/src/Directory.Build.targets
 index 87c4ea80..7fdf2a3d 100644

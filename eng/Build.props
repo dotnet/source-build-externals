@@ -1,7 +1,31 @@
 <Project>
-
   <ItemGroup>
-    <ProjectToBuild Include="$(RepoRoot)repo-projects\*.proj" />
+    <DependencyPackageProjects Include="$(RepoRoot)repo-projects\abstractions-xunit.proj" />
   </ItemGroup>
 
+  <ItemGroup Condition="'$(BuildDependencyPackageProjects)' != 'true'">
+    <ProjectToBuild Include="$(RepoRoot)repo-projects\*.proj" />
+    <ProjectToBuild Remove="@(DependencyPackageProjects)" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(BuildDependencyPackageProjects)' == 'true'">
+    <!-- Building an empty project triggers building the Arcade Tools.proj which is needed before BuildDependencyPackageProjects -->
+    <ProjectToBuild Include="$(RepoRoot)\eng\NoOp.csproj" />
+  </ItemGroup>
+
+  <Target Name="BuildDependencyPackageProjects"
+          AfterTargets="Execute"
+          Condition="'$(BuildDependencyPackageProjects)' == 'true'"
+          Outputs="%(DependencyPackageProjects.Identity)">
+    <MSBuild Condition="'@(DependencyPackageProjects)' != ''"
+             Projects="@(DependencyPackageProjects)"
+             Targets="Restore;Build;Pack" />
+
+    <ItemGroup>
+      <DependencyPackagesToCopy Include="$(ArtifactsPackagesDir)*.nupkg" />
+    </ItemGroup>
+    <Copy Condition="'$(LocalNuGetPackageCacheDirectory)' != ''"
+          SourceFiles="@(DependencyPackagesToCopy)"
+          DestinationFolder="$(LocalNuGetPackageCacheDirectory)" />
+  </Target>
 </Project>

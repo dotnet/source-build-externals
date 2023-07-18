@@ -12,7 +12,6 @@
         <BuildAndRestoreProject>$(ProjectDirectory)/xunit-notests.slnf</BuildAndRestoreProject>
         <XunitVersion>2.4.2</XunitVersion>
         <BuildCommandArgs>/p:Configuration=$(Configuration)</BuildCommandArgs>
-        <BuildCommandArgs>$(BuildCommandArgs) /p:MicrosoftSourceLinkGitHubVersion=$(MicrosoftSourceLinkGitHubVersion)</BuildCommandArgs>
         <BuildCommandArgs>$(BuildCommandArgs) /p:PackageVersion=$(XunitVersion)</BuildCommandArgs>
         <BuildCommandArgs>$(BuildCommandArgs) /p:DelaySign=$(DelaySign)</BuildCommandArgs>
         <BuildCommandArgs>$(BuildCommandArgs) /p:PublicSign=$(PublicSign)</BuildCommandArgs>

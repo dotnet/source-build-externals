@@ -1,12 +1,13 @@
-From be553bc779d73981cde84753edd299cdce5e2007 Mon Sep 17 00:00:00 2001
+From b68777acde280b91039b98ff36c4d028064a8f52 Mon Sep 17 00:00:00 2001
 From: Matt Mitchell <mmitche@microsoft.com>
-Date: Fri, 16 Jun 2023 11:56:50 -0700
+Date: Wed, 19 Jul 2023 11:47:26 -0700
 Subject: [PATCH] Patching
 
 ---
- global.json                                      |  6 ------
- src/xunit.abstractions/xunit.abstractions.csproj | 11 +++--------
- 2 files changed, 3 insertions(+), 14 deletions(-)
+ global.json                                       |  6 ------
+ src/xunit.abstractions/Properties/AssemblyInfo.cs |  2 +-
+ src/xunit.abstractions/xunit.abstractions.csproj  | 11 +++--------
+ 3 files changed, 4 insertions(+), 15 deletions(-)
  delete mode 100644 global.json
 
 diff --git a/global.json b/global.json
@@ -21,6 +22,18 @@ index 9f78419..0000000
 -    "rollForward": "latestMinor"
 -  }
 -}
+diff --git a/src/xunit.abstractions/Properties/AssemblyInfo.cs b/src/xunit.abstractions/Properties/AssemblyInfo.cs
+index 041f22b..c5b5124 100644
+--- a/src/xunit.abstractions/Properties/AssemblyInfo.cs
++++ b/src/xunit.abstractions/Properties/AssemblyInfo.cs
+@@ -17,6 +17,6 @@
+ [assembly: AssemblyProduct("xUnit.net Testing Framework")]
+ [assembly: AssemblyCopyright("Copyright (C) .NET Foundation")]
+ [assembly: CLSCompliant(true)]
+-[assembly: AssemblyVersion("2.0.1.0")]
++[assembly: AssemblyVersion("2.0.3.0")]
+ 
+ [assembly: SuppressMessage("Microsoft.Naming", "CA1709:IdentifiersShouldBeCasedCorrectly", MessageId = "xunit")]
 diff --git a/src/xunit.abstractions/xunit.abstractions.csproj b/src/xunit.abstractions/xunit.abstractions.csproj
 index fa4cf23..5d61131 100644
 --- a/src/xunit.abstractions/xunit.abstractions.csproj
@@ -44,5 +57,5 @@ index fa4cf23..5d61131 100644
 -
  </Project>
 -- 
-2.41.0.windows.1
+2.41.0.windows.2
 

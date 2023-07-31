@@ -54,7 +54,7 @@
   
       <!-- xunit has a non-standard set of packaging. Instead of calling pack on the solution call it on each individual build project,
            with no-build and and no-restore, with the explicit nuspecs associated with the various projects. -->
-      <Exec Command="$(DotnetToolCommand) pack --no-build --no-restore /bl:pack.binlog @(PackProjectAndNuspec) /p:NuspecFile=%(NuspecFile) $(BuildCommandArgs)"
+      <Exec Command="$(DotnetToolCommand) pack --no-build --no-restore /bl:pack.binlog @(PackProjectAndNuspec) /p:NuspecFile=%(PackProjectAndNuspec.NuspecFile) $(BuildCommandArgs)"
             EnvironmentVariables="@(PackEnvironmentVariables)"
             WorkingDirectory="$(ProjectDirectory)"
             IgnoreStandardErrorWarningFormat="true" />

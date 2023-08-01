@@ -30,6 +30,10 @@
         <PackEnvironmentVariables Include="NuspecProperties=PackageVersion=$(XunitVersion)%3BConfiguration=$(Configuration)"/>
 
         <PackProjectAndNuspec Include="$(ProjectDirectory)/src/xunit.execution/xunit.execution.csproj">
+          <NuspecFile>$(ProjectDirectory)/src/xunit.extensibility.execution.nuspec</NuspecFile>
+        </PackProjectAndNuspec>
+
+        <PackProjectAndNuspec Include="$(ProjectDirectory)/src/xunit.execution/xunit.execution.csproj">
           <NuspecFile>$(ProjectDirectory)/src/xunit.extensibility.core.nuspec</NuspecFile>
         </PackProjectAndNuspec>
 

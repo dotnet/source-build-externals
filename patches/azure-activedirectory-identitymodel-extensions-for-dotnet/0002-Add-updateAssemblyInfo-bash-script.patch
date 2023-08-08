@@ -3,6 +3,7 @@ From: Matt Thalman <mthalman@microsoft.com>
 Date: Fri, 28 Jul 2023 16:04:03 -0500
 Subject: [PATCH] Add updateAssemblyInfo bash script
 
+Backport: https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet/pull/2211
 ---
  updateAssemblyInfo.sh | 48 +++++++++++++++++++++++++++++++++++++++++++
  1 file changed, 48 insertions(+)

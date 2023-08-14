@@ -1,0 +1,30 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Jean-Marc Prieur <jmprieur@microsoft.com>
+Date: Mon, 14 Aug 2023 12:36:54 -0700
+Subject: [PATCH] Update to IdentityModel 7.0.0-preview2
+
+---
+ ...ure-activedirectory-identitymodel-extensions-for-dotnet.proj | 2 +-
+ src/azure-activedirectory-identitymodel-extensions-for-dotnet   | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/repo-projects/azure-activedirectory-identitymodel-extensions-for-dotnet.proj b/repo-projects/azure-activedirectory-identitymodel-extensions-for-dotnet.proj
+index 9223f65..cc5055d 100644
+--- a/repo-projects/azure-activedirectory-identitymodel-extensions-for-dotnet.proj
++++ b/repo-projects/azure-activedirectory-identitymodel-extensions-for-dotnet.proj
+@@ -18,7 +18,7 @@
+       <BuildCommandArgs>$(BuildCommandArgs) /p:Configuration=$(Configuration)</BuildCommandArgs>
+       <BuildCommandArgs>$(BuildCommandArgs) /v:$(LogVerbosity)</BuildCommandArgs>
+       <BuildCommandArgs>$(BuildCommandArgs) $(RedirectRepoOutputToLog)</BuildCommandArgs>
+-      <BuildCommandArgs>$(BuildCommandArgs) /p:Version=7.0.0-preview</BuildCommandArgs>
++      <BuildCommandArgs>$(BuildCommandArgs) /p:Version=7.0.0-preview2</BuildCommandArgs>
+ 
+       <PackCommandArgs>$(BuildCommandArgs) --output $(ProjectDirectory)pack</PackCommandArgs>
+     </PropertyGroup>
+diff --git a/src/azure-activedirectory-identitymodel-extensions-for-dotnet b/src/azure-activedirectory-identitymodel-extensions-for-dotnet
+index 9aab274..1b51395 160000
+--- a/src/azure-activedirectory-identitymodel-extensions-for-dotnet
++++ b/src/azure-activedirectory-identitymodel-extensions-for-dotnet
+@@ -1 +1 @@
+-Subproject commit 9aab2749e0ac8a6b8090980c445a559b816f0cf0
++Subproject commit 1b513958f94300b750a86be5609042479a2ccbd4

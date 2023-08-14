@@ -21,8 +21,8 @@ index 4dd7b55a..1c8f94ee 100644
 -    <VersionPrefix>11.0.1</VersionPrefix>
 -    <VersionSuffix>beta2</VersionSuffix>
 +    <AssemblyVersion>13.0.0.0</AssemblyVersion>
-+    <FileVersion>13.0.1</FileVersion>
-+    <VersionPrefix>13.0.1</VersionPrefix>
++    <FileVersion>13.0.3</FileVersion>
++    <VersionPrefix>13.0.3</VersionPrefix>
 +    <VersionSuffix></VersionSuffix>
      <Authors>James Newton-King</Authors>
      <Company>Newtonsoft</Company>

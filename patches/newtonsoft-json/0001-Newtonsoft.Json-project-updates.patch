@@ -1,24 +1,43 @@
 From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
 From: Matt Thalman <mthalman@microsoft.com>
-Date: Mon, 14 Aug 2023 15:54:36 -0500
-Subject: [PATCH] remove ruleset and unnecessary dependencies
+Date: Tue, 15 Aug 2023 09:49:47 -0500
+Subject: [PATCH] Newtonsoft.Json project updates
 
 ---
- Src/Newtonsoft.Json/Newtonsoft.Json.csproj | 5 -----
- 1 file changed, 5 deletions(-)
+ Src/Newtonsoft.Json/Newtonsoft.Json.csproj | 15 +++++----------
+ 1 file changed, 5 insertions(+), 10 deletions(-)
 
 diff --git a/Src/Newtonsoft.Json/Newtonsoft.Json.csproj b/Src/Newtonsoft.Json/Newtonsoft.Json.csproj
-index 47c63018..33dd1a77 100644
+index 47c63018..c939e71a 100644
 --- a/Src/Newtonsoft.Json/Newtonsoft.Json.csproj
 +++ b/Src/Newtonsoft.Json/Newtonsoft.Json.csproj
-@@ -31,7 +31,6 @@
+@@ -4,10 +4,10 @@
+     <TargetFrameworks Condition="'$(LibraryFrameworks)'!=''">$(LibraryFrameworks)</TargetFrameworks>
+     <LangVersion>9.0</LangVersion>
+     <!-- version numbers will be updated by build -->
+-    <AssemblyVersion>11.0.0.0</AssemblyVersion>
+-    <FileVersion>11.0.1</FileVersion>
+-    <VersionPrefix>11.0.1</VersionPrefix>
+-    <VersionSuffix>beta2</VersionSuffix>
++    <AssemblyVersion>13.0.0.0</AssemblyVersion>
++    <FileVersion>13.0.3</FileVersion>
++    <VersionPrefix>13.0.3</VersionPrefix>
++    <VersionSuffix></VersionSuffix>
+     <Authors>James Newton-King</Authors>
+     <Company>Newtonsoft</Company>
+     <Product>Json.NET</Product>
+@@ -31,10 +31,9 @@
      <MinClientVersion>2.12</MinClientVersion>
      <IncludeSymbols>true</IncludeSymbols>
      <SymbolPackageFormat>snupkg</SymbolPackageFormat>
 -    <CodeAnalysisRuleset>Newtonsoft.Json.ruleset</CodeAnalysisRuleset>
      <EmbedUntrackedSources>true</EmbedUntrackedSources>
      <!--Package Validation-->
-     <EnablePackageValidation>true</EnablePackageValidation>
+-    <EnablePackageValidation>true</EnablePackageValidation>
++    <EnablePackageValidation>false</EnablePackageValidation>
+     <PackageValidationBaselineVersion>13.0.1</PackageValidationBaselineVersion>
+     <!--CP0003 will be logged when the assembly identity between baseline package and current don't match.
+     Disable that warning since local builds do not strong-name sign the assembly, causing a mistmatch when comparing
 @@ -47,10 +46,6 @@
      <None Include="packageIcon.png" Pack="true" PackagePath="\" />
      <None Include="README.md" Pack="true" PackagePath="\" />

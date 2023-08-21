@@ -4,22 +4,22 @@ Date: Mon, 21 Aug 2023 10:22:54 -0500
 Subject: [PATCH] fix for source build
 
 ---
- build/common.props                                         | 5 -----
- build/dependencies.props                                   | 4 ++--
- build/targets.props                                        | 4 ++--
- buildConfiguration.xml                                     | 2 +-
- .../Microsoft.IdentityModel.Abstractions.csproj            | 7 -------
- .../Microsoft.IdentityModel.JsonWebTokens.csproj           | 7 -------
- .../Microsoft.IdentityModel.Logging.csproj                 | 7 -------
- .../Microsoft.IdentityModel.Protocols.OpenIdConnect.csproj | 7 -------
- .../Microsoft.IdentityModel.Protocols.WsFederation.csproj  | 7 -------
- .../Microsoft.IdentityModel.Protocols.csproj               | 7 -------
- .../Microsoft.IdentityModel.Tokens.Saml.csproj             | 7 -------
- .../Microsoft.IdentityModel.Tokens.csproj                  | 7 -------
- .../Microsoft.IdentityModel.Validators.csproj              | 7 -------
- .../Microsoft.IdentityModel.Xml.csproj                     | 7 -------
- .../System.IdentityModel.Tokens.Jwt.csproj                 | 7 -------
- 15 files changed, 5 insertions(+), 87 deletions(-)
+ build/common.props                                        | 5 -----
+ build/dependencies.props                                  | 8 ++++----
+ build/targets.props                                       | 4 ++--
+ buildConfiguration.xml                                    | 2 +-
+ .../Microsoft.IdentityModel.Abstractions.csproj           | 7 -------
+ .../Microsoft.IdentityModel.JsonWebTokens.csproj          | 7 -------
+ .../Microsoft.IdentityModel.Logging.csproj                | 7 -------
+ ...Microsoft.IdentityModel.Protocols.OpenIdConnect.csproj | 7 -------
+ .../Microsoft.IdentityModel.Protocols.WsFederation.csproj | 7 -------
+ .../Microsoft.IdentityModel.Protocols.csproj              | 7 -------
+ .../Microsoft.IdentityModel.Tokens.Saml.csproj            | 7 -------
+ .../Microsoft.IdentityModel.Tokens.csproj                 | 7 -------
+ .../Microsoft.IdentityModel.Validators.csproj             | 7 -------
+ .../Microsoft.IdentityModel.Xml.csproj                    | 7 -------
+ .../System.IdentityModel.Tokens.Jwt.csproj                | 7 -------
+ 15 files changed, 7 insertions(+), 89 deletions(-)
 
 diff --git a/build/common.props b/build/common.props
 index 001d7daa..77c12525 100644
@@ -43,15 +43,23 @@ index 001d7daa..77c12525 100644
  
  </Project>
 diff --git a/build/dependencies.props b/build/dependencies.props
-index 23e1b910..b127c3d8 100644
+index 23e1b910..254f709e 100644
 --- a/build/dependencies.props
 +++ b/build/dependencies.props
-@@ -10,8 +10,8 @@
+@@ -4,14 +4,14 @@
+     <AspNetCoreMinSupportedVersion>2.1.1</AspNetCoreMinSupportedVersion>
+     <MicrosoftAzureKeyVaultVersion>3.0.5</MicrosoftAzureKeyVaultVersion>
+     <MicrosoftAzureServicesAppAuthenticationVersion>1.0.3</MicrosoftAzureServicesAppAuthenticationVersion>
+-    <MicrosoftCSharpVersion>4.5.0</MicrosoftCSharpVersion>
++    <MicrosoftCSharpVersion>4.7.0</MicrosoftCSharpVersion>
+     <MicrosoftSourceLinkGitHubVersion>1.0.0</MicrosoftSourceLinkGitHubVersion>
+     <NetStandardVersion>2.0.3</NetStandardVersion>
      <NewtonsoftVersion>13.0.3</NewtonsoftVersion>
      <SystemMemoryVersion>4.5.5</SystemMemoryVersion>
-     <SystemSecurityCryptographyCngVersion>4.5.0</SystemSecurityCryptographyCngVersion>
+-    <SystemSecurityCryptographyCngVersion>4.5.0</SystemSecurityCryptographyCngVersion>
 -    <SystemTextEncodingsWeb>4.7.2</SystemTextEncodingsWeb>
 -    <SystemTextJson>4.7.2</SystemTextJson>
++    <SystemSecurityCryptographyCngVersion>5.0.0</SystemSecurityCryptographyCngVersion>
 +    <SystemTextEncodingsWeb>7.0.0</SystemTextEncodingsWeb>
 +    <SystemTextJson>7.0.0</SystemTextJson>
    </PropertyGroup>

@@ -35,7 +35,9 @@ source build. See the [existing projects](repo-projects) for examples.
 must be applied via [patches](patches). See [below](#patches) for more info on patches.
 
 1. Validate the version of the NuGet packages and binaries produced by the build. See the contents of
-`./artifacts/packages/<build_configuration>/NonShipping/Microsoft.SourceBuild.Intermediate.source-build-externals.x.y.z-dev.nupkg`
+`./artifacts/packages/<build_configuration>/NonShipping/Microsoft.SourceBuild.Intermediate.source-build-externals.x.y.z-dev.nupkg`.
+
+1. If the original binaries have strong name signatures, validate the source built ones have them as well.
 
 ## Updating an External Component to a Newer Version
 
@@ -43,6 +45,7 @@ must be applied via [patches](patches). See [below](#patches) for more info on p
 
     ``` bash
     cd src/<external_repo_dir>
+    git fetch
     git checkout <updated_sha>
     cd ..
     git add .

@@ -23,12 +23,12 @@
           WorkingDirectory="$(ProjectDirectory)"
           IgnoreStandardErrorWarningFormat="true" />
 
-    <Exec Command="$(DotnetToolCommand) build /bl:build.binlog $(BuildCommandArgs)"
+    <Exec Command="$(DotnetToolCommand) build --no-restore /bl:build.binlog $(BuildCommandArgs)"
           EnvironmentVariables="@(EnvironmentVariables)"
           WorkingDirectory="$(ProjectDirectory)"
           IgnoreStandardErrorWarningFormat="true" />
 
-    <Exec Command="$(DotnetToolCommand) pack /bl:pack.binlog $(BuildCommandArgs)"
+    <Exec Command="$(DotnetToolCommand) pack --no-build /bl:pack.binlog $(BuildCommandArgs)"
           EnvironmentVariables="@(EnvironmentVariables)"
           WorkingDirectory="$(ProjectDirectory)"
           IgnoreStandardErrorWarningFormat="true" />

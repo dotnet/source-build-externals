@@ -15,6 +15,7 @@
       <BuildCommandArgs>$(BuildCommandArgs) $(RedirectRepoOutputToLog)</BuildCommandArgs>
       <BuildCommandArgs>$(BuildCommandArgs) /p:DelaySign=$(DelaySign)</BuildCommandArgs>
       <BuildCommandArgs>$(BuildCommandArgs) /p:PublicSign=$(PublicSign)</BuildCommandArgs>
+      <BuildCommandArgs>$(BuildCommandArgs) /p:EnablePackageValidation=false</BuildCommandArgs>
       <BuildCommandArgs>$(BuildCommandArgs) /p:Version=1.6.10</BuildCommandArgs>
     </PropertyGroup>
 

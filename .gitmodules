@@ -15,4 +15,4 @@
 	url = https://github.com/microsoft/MSBuildLocator
 [submodule "src/azure-activedirectory-identitymodel-extensions-for-dotnet"]
 	path = src/azure-activedirectory-identitymodel-extensions-for-dotnet
-	url = https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet.git
+	url = https://dnceng@dev.azure.com/dnceng/internal/_git/azure-identitymodel

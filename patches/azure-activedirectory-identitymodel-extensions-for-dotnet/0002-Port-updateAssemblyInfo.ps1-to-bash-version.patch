@@ -13,7 +13,7 @@ new file mode 100755
 index 00000000..7308e08c
 --- /dev/null
 +++ b/updateAssemblyInfo.sh
-@@ -0,0 +1,50 @@
+@@ -0,0 +1,48 @@
 +#!/bin/bash
 +set -euo pipefail
 +
@@ -25,11 +25,9 @@ index 00000000..7308e08c
 +# Formats the date by replacing the 4-digit year with a 2-digit value and then subtract 19
 +dateTimeStamp=$(echo $((10#${date:0:2}-19)))${date:2}
 +
-+commitSha=$(git rev-parse HEAD)
-+
 +assemblyVersion=$(sed -n 's/.*<assemblyVersion>\([^<]*\)<.*/\1/p' ${scriptroot}/buildConfiguration.xml)
 +assemblyFileVersion="$assemblyVersion.${dateTimeStamp::$((${#dateTimeStamp} - 6))}" # Trim minutes/seconds
-+assemblyInformationalVersion="$assemblyVersion.$dateTimeStamp.$commitSha"
++assemblyInformationalVersion="$assemblyVersion.$dateTimeStamp"
 +
 +echo "assemblyVersion: $assemblyVersion"
 +echo "assemblyFileVersion: $assemblyFileVersion"

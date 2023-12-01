@@ -104,8 +104,8 @@ index 4200eb0d..3f156848 100644
    <nugetVersion>3.5.0-rc-1285</nugetVersion>
 -  <runtimes>net45,net461,netstandard2.0</runtimes>
 +  <runtimes>netstandard2.0</runtimes>
-   <assemblyVersion>6.34.0</assemblyVersion>
-   <nugetSuffix>preview</nugetSuffix>
+   <assemblyVersion>6.35.0</assemblyVersion>
+   <nugetSuffix></nugetSuffix>
    <projects>
 diff --git a/src/Microsoft.IdentityModel.Abstractions/Microsoft.IdentityModel.Abstractions.csproj b/src/Microsoft.IdentityModel.Abstractions/Microsoft.IdentityModel.Abstractions.csproj
 index e605b667..e073126a 100644

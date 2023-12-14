@@ -1,0 +1,7 @@
+<Project>
+  <Import Project="docker-creds-provider.proj" />
+
+  <PropertyGroup>
+    <DockerCredsProviderPackageVersion>2.2.1</DockerCredsProviderPackageVersion>
+  </PropertyGroup>
+</Project>

@@ -18,6 +18,7 @@
         <BuildCommandArgs>$(BuildCommandArgs) /v:$(LogVerbosity)</BuildCommandArgs>
         <BuildCommandArgs>$(BuildCommandArgs) $(RedirectRepoOutputToLog)</BuildCommandArgs>
         <BuildCommandArgs>$(BuildCommandArgs) /p:Version=$(SpectreConsolePackageVersion)</BuildCommandArgs>
+        <BuildCommandArgs>$(BuildCommandArgs) /p:TargetFrameworks=$(NetCurrent)</BuildCommandArgs>
       </PropertyGroup>
   
       <Exec Command="$(DotnetToolCommand) restore /bl:restore.binlog $(BuildCommandArgs)"

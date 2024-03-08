@@ -41,6 +41,16 @@ must be applied via [patches](patches). See [below](#patches) for more info on p
 
 ## Updating an External Component to a Newer Version
 
+When updating a component that is used in both Arcade and another target repository, follow these steps:
+
+1. **Add the updated component**: Include the component with the updated version as a new submodule in source-build-externals.
+2. **Update the target repository**: Allow the updated version to flow to the target repository and update the target repository to use this new version.
+3. **Build and release**: Perform a build and release the artifacts to update the n-1 (previous) artifacts for Arcade.
+4. **Update Arcade**: Update Arcade to use the new version of the component.
+5. **Clean up**: Remove the outdated component from source-build-externals.
+
+To update the component, follow these steps:
+
 1. Update the `src/<external_repo_dir>` to the desired sha
 
     ``` bash

@@ -70,13 +70,13 @@ may need to flow in at the same time as the cooresponding changes in product rep
 
 ### Updating an External Component Used in a Toolset Repo and in a Target Repo
 
-When updating a component that is used in a repository which is built before source-build-externals during the product build (toolset repos) and is used in a repo that is build after source-build-externals (target repos), please adhere to the following steps:
+When updating a component that is used in a repository which is built before source-build-externals during the product build (toolset repos) and is used in a repo that is built after source-build-externals (target repos), please adhere to the following steps:
 
 > [!NOTE]
 >
 > Current toolset repositories are:
 > - [Arcade](https://github.com/dotnet/arcade)
-> - [Souce-build-reference-packages](https://github.com/dotnet/source-build-reference-packages/)
+> - [Source-build-reference-packages](https://github.com/dotnet/source-build-reference-packages/)
 > - [Cecil](https://github.com/dotnet/cecil)
 > - [Command-line-api](https://github.com/dotnet/command-line-api/)
 > - [Emsdk](https://github.com/dotnet/emsdk)

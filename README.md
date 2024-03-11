@@ -41,16 +41,6 @@ must be applied via [patches](patches). See [below](#patches) for more info on p
 
 ## Updating an External Component to a Newer Version
 
-When updating a component that is used in both Arcade and another target repository, follow these steps:
-
-1. **Add the updated component**: Include the component with the updated version as a new submodule in source-build-externals.
-2. **Update the target repository**: Allow the updated version to flow to the target repository and update the target repository to use this new version.
-3. **Build and release**: Perform a build and release the artifacts to update the n-1 (previous) artifacts for Arcade.
-4. **Update Arcade**: Update Arcade to use the new version of the component.
-5. **Clean up**: Remove the outdated component from source-build-externals.
-
-To update the component, follow these steps:
-
 1. Update the `src/<external_repo_dir>` to the desired sha
 
     ``` bash
@@ -77,6 +67,25 @@ To update the component, follow these steps:
 
 1. After the PR is merged to update a component, coordination is often needed in the darc dependency flows. The source-build-external update
 may need to flow in at the same time as the cooresponding changes in product repos which take a dependency on the new component version.
+
+### Updating an External Component Used in a Toolset Repo and in a Target Repo
+
+When updating a component that is used in a repository which is built before source-build-externals during the product build (toolset repos) and is used in a repo that is build after source-build-externals (target repos), please adhere to the following steps:
+
+> [!NOTE]
+>
+> Current toolset repositories are:
+> - [Arcade](https://github.com/dotnet/arcade)
+> - [Souce-build-reference-packages](https://github.com/dotnet/source-build-reference-packages/)
+> - [Cecil](https://github.com/dotnet/cecil)
+> - [Command-line-api](https://github.com/dotnet/command-line-api/)
+> - [Emsdk](https://github.com/dotnet/emsdk)
+
+1. **Add the updated component**: Include the component with the updated version as a new submodule in source-build-externals named `<component>-<new-version>` (this new submodule should be separate from any previously existing version's submodule). Rename the component's old submodule to `<component>-<old-version>`. Also rename the old component's patches directory in `patches/` (if it exists) and the project file in `repo-projects/` to match the submodule name of `<component>-<old-version>`.
+2. **Update the target repository**: Allow the updated version to flow to the target repository and update the target repository to use this new version.
+3. **Build and release**: Perform a build and release the artifacts to update the n-1 (previous) artifacts for the toolset repository.
+4. **Update the toolset repository**: Update the toolset repository to use the new version of the component.
+5. **Clean up**: Remove the outdated component from source-build-externals, the outdated component's patches directory in `patches/`, if applicable, and the project file in `repo-projects`. Rename the updated component's submodule to `<component>`. Also rename any existing patches directory in `patches/` and the respective project file in `repo-projects/` to match the submodule name, `<component>`.
 
 ## Patches
 

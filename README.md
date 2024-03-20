@@ -70,11 +70,13 @@ may need to flow in at the same time as the cooresponding changes in product rep
 
 ### Updating an External Component Used in a Pre-SBE Repo
 
-When updating a component that is used in a repository which is built before source-build-externals during the product build (pre-SBE repo), please adhere to the following steps:
+A _Pre-SBE_ repo is a repo that is built before source-build-externals during the product build.
 
 > [!NOTE]
 >
-> You can view the current pre-SBE repos by running `dotnet msbuild repo-projects/source-build-externals.proj -target:ShowDependencyGraph /p:DotNetBuildSourceOnly=true` from the root of the product repo.
+> You can view the current pre-SBE repos by running `dotnet msbuild repo-projects/source-build-externals.proj -target:ShowDependencyGraph /p:DotNetBuildSourceOnly=true` from the root of the VMR.
+
+When updating a component that is used in a Pre-SBE repo, please adhere to the following steps:
 
 1. **Add the updated component**: Include the component with the updated version as a new submodule in source-build-externals named `<component>-<new-version>` (this new submodule should be separate from any previously existing version's submodule). Rename the component's old submodule to `<component>-<old-version>`. Also rename the old component's patches directory in `patches/` (if it exists) and the project file in `repo-projects/` to match the submodule name of `<component>-<old-version>`.
     - See [#276](https://github.com/dotnet/source-build-externals/pull/276) for an example.

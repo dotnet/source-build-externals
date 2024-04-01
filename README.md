@@ -90,7 +90,7 @@ When updating a component that is used in a Pre-SBE repo, please adhere to the f
 1. When creating/updating patches, it is desirable to backport the changes whenever feasible as this reduces
 the maintenance burden when [updating a component to a newer version](#updating-an-external-component-to-a-newer-version).
 
-1. Steps to create new patches
+1. Steps to create new patches:
 
     1. Make changes in the submodule.
 

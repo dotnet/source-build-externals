@@ -78,21 +78,21 @@ A _Pre-SBE_ repo is a repo that is built before source-build-externals during th
 
 When updating a component that is used in a Pre-SBE repo, please adhere to the following steps:
 
-1. **Include the component in Version.Props and Version.Details.xml**:
+1. **Include the component in Versions.props and Version.Details.xml**:
 
     1. **Locate the Pre-SBE repository**: This is where you'll be making changes.
 
-    1. **Check `eng/Version.Props`**: Look for a version property for your component. If it doesn't exist, you'll need to add it.
+    1. **Check `eng/Versions.props`**: Look for a version property for your component. If it doesn't exist, you'll need to add it.
 
     1. **Check `eng/Version.Details.xml`**: Similarly, look for an entry for your component. If it doesn't exist, add it.
 
     1.  **Add a descriptive comment**: When adding an entry to `Version.Details.xml`, include a comment above the entry that describes what it is.
 
-    1. **Examples**: For reference, you can check these examples of [`eng/Version.Props`](https://github.com/dotnet/arcade/pull/14698/files#diff-1ea18ff65faa2ae6fed570b83747086d0317f5e4bc325064f6c14319a9c4ff67R81) and [`eng/Version.Details.xml`](https://github.com/dotnet/arcade/pull/14698/files#diff-fb62e94a1d6f29f863e3d0a22aa38269f6cd1d7f03b109dc06e2cbf2548b86d3R8).
+    1. **Examples**: For reference, you can check these examples of [`eng/Versions.props`](https://github.com/dotnet/arcade/pull/14698/files#diff-1ea18ff65faa2ae6fed570b83747086d0317f5e4bc325064f6c14319a9c4ff67R81) and [`eng/Version.Details.xml`](https://github.com/dotnet/arcade/pull/14698/files#diff-fb62e94a1d6f29f863e3d0a22aa38269f6cd1d7f03b109dc06e2cbf2548b86d3R8).
 
 1. **Update the component**: 
 
-    1. **Wait for changes to propagate**: After making changes to the Version.Props and Version.Details.xml, you need to wait for these changes to flow to the [VMR](https://github.com/dotnet/dotnet).
+    1. **Wait for changes to propagate**: After making changes to the Versions.props and Version.Details.xml, you need to wait for these changes to flow to the [VMR](https://github.com/dotnet/dotnet).
 
     1. **Update the component**: Once the changes have propagated, you can update the component as usual. For guidance, follow the steps in [`Updating an External Component to a Newer Version`](#updating-an-external-component-to-a-newer-version).
 

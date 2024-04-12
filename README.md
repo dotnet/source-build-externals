@@ -76,7 +76,7 @@ A _Pre-SBE_ repo is a repo that is built before source-build-externals during th
 >
 > You can view the current pre-SBE repos by running `dotnet msbuild repo-projects/source-build-externals.proj -target:ShowDependencyGraph /p:DotNetBuildSourceOnly=true` from the root of the VMR.
 
-When updating a component that is used in a Pre-SBE repo, please adhere to the following steps:
+The steps outlined below will enable source-build to adjust the package version to match the N-1 artifacts in the product build. If you prefer to maintain a fixed version of the dependency and prevent source-build from making any changes, please follow the instructions provided [here](https://github.com/dotnet/source-build-externals/blob/83566118e44922c30d146654d42c7c3745cc119d/README.md?plain=1#L81). However, if you are comfortable with source-build infrastructure adjusting your package version, please proceed with the following steps:
 
 1. **Include the component in Versions.props and Version.Details.xml**:
 

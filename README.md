@@ -92,7 +92,7 @@ The steps outlined below will enable source-build to adjust the package version 
 
 1. **Update the component**: 
 
-    1. **Wait for changes to propagate**: After making changes to the Versions.props and Version.Details.xml, you need to wait for these changes to flow to the [VMR](https://github.com/dotnet/dotnet).
+    1. **Wait for changes to propagate**: If you added a Version.Details.xml dependency and corresponding property in the Versions.Props for the component that you are updating, then you need to wait for these changes to flow to the [VMR](https://github.com/dotnet/dotnet) before you can update the component. If there is already a Version.Details.xml dependency and corresponding property in the Versions.Props, then there is no need to wait and you can move on to the next step immediately.
 
     1. **Update the component**: Once the changes have propagated, you can update the component as usual. For guidance, follow the steps in [`Updating an External Component to a Newer Version`](#updating-an-external-component-to-a-newer-version).
 

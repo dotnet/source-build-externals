@@ -4,7 +4,7 @@ Date: Wed, 19 Jun 2024 14:48:44 -0700
 Subject: [PATCH] fix for source build
 
 ---
- build/common.props                                        | 1 -
+ build/common.props                                        | 6 ------
  build/dependencies.props                                  | 8 ++++----
  build/targets.props                                       | 2 +-
  buildConfiguration.xml                                    | 2 +-
@@ -316,6 +316,3 @@ index bbb9ef2c..448ece2d 100644
    <ItemGroup>
      <ProjectReference Include="..\Microsoft.IdentityModel.JsonWebTokens\Microsoft.IdentityModel.JsonWebTokens.csproj" />
      <ProjectReference Include="..\Microsoft.IdentityModel.Tokens\Microsoft.IdentityModel.Tokens.csproj" />
--- 
-2.30.1 (Apple Git-130)
-

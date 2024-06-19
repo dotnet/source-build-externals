@@ -1,4 +1,4 @@
-From 431552ba31b190c280030689ad3dd18f9c5e942e Mon Sep 17 00:00:00 2001
+From dabe0a7a30cf4476569c5928f2fd3a6d0ca1876f Mon Sep 17 00:00:00 2001
 From: wtgodbe <wigodbe@microsoft.com>
 Date: Wed, 19 Jun 2024 14:48:44 -0700
 Subject: [PATCH] fix for source build
@@ -27,13 +27,16 @@ diff --git a/build/common.props b/build/common.props
 index efd7e90e..05f908ef 100644
 --- a/build/common.props
 +++ b/build/common.props
-@@ -62,7 +62,6 @@
-   <ItemGroup>
-      <!-- Protects against sync-over-async: https://github.com/microsoft/vs-threading/blob/main/doc/analyzers/index.md. -->
-     <PackageReference Include="Microsoft.VisualStudio.Threading.Analyzers" Version="17.9.28" PrivateAssets="all" />
--    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="$(MicrosoftSourceLinkGitHubVersion)" PrivateAssets="All"/>
-   </ItemGroup>
+@@ -59,10 +59,4 @@
+     <NoWarn>$(NoWarn);SYSLIB0051</NoWarn>
+   </PropertyGroup>
  
+-  <ItemGroup>
+-     <!-- Protects against sync-over-async: https://github.com/microsoft/vs-threading/blob/main/doc/analyzers/index.md. -->
+-    <PackageReference Include="Microsoft.VisualStudio.Threading.Analyzers" Version="17.9.28" PrivateAssets="all" />
+-    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="$(MicrosoftSourceLinkGitHubVersion)" PrivateAssets="All"/>
+-  </ItemGroup>
+-
  </Project>
 diff --git a/build/dependencies.props b/build/dependencies.props
 index 8203da57..2ac3eee7 100644

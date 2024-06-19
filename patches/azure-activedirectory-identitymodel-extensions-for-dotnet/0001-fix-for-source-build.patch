@@ -1,10 +1,10 @@
-From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
-From: Eric Erhardt <eric.erhardt@microsoft.com>
-Date: Tue, 17 Oct 2023 12:59:45 -0500
+From 51e27d293855e73956fd6ced787308c6994305ca Mon Sep 17 00:00:00 2001
+From: Stephen Halter <halter73@gmail.com>
+Date: Wed, 19 Jun 2024 16:34:01 -0700
 Subject: [PATCH] fix for source build
 
 ---
- build/common.props                                        | 6 +-----
+ build/common.props                                        | 1 -
  build/dependencies.props                                  | 8 ++++----
  build/targets.props                                       | 4 ++--
  buildConfiguration.xml                                    | 2 +-
@@ -19,39 +19,28 @@ Subject: [PATCH] fix for source build
  .../Microsoft.IdentityModel.Validators.csproj             | 7 -------
  .../Microsoft.IdentityModel.Xml.csproj                    | 7 -------
  .../System.IdentityModel.Tokens.Jwt.csproj                | 7 -------
- 15 files changed, 8 insertions(+), 89 deletions(-)
+ 15 files changed, 7 insertions(+), 85 deletions(-)
 
 diff --git a/build/common.props b/build/common.props
-index 7f22eb03..ec229fc2 100644
+index efd7e90e..05f908ef 100644
 --- a/build/common.props
 +++ b/build/common.props
-@@ -46,7 +46,7 @@
-   </PropertyGroup>
- 
-   <PropertyGroup>
--    <EnablePackageValidation>true</EnablePackageValidation>
-+    <EnablePackageValidation>false</EnablePackageValidation>
-     <PackageValidationBaselineVersion>7.0.0</PackageValidationBaselineVersion>
-   </PropertyGroup>
- 
-@@ -58,9 +58,5 @@
-     <NoWarn>$(NoWarn);SYSLIB0050</NoWarn>
-     <NoWarn>$(NoWarn);SYSLIB0051</NoWarn>
-   </PropertyGroup>
--  
--  <ItemGroup>
+@@ -62,7 +62,6 @@
+   <ItemGroup>
+      <!-- Protects against sync-over-async: https://github.com/microsoft/vs-threading/blob/main/doc/analyzers/index.md. -->
+     <PackageReference Include="Microsoft.VisualStudio.Threading.Analyzers" Version="17.9.28" PrivateAssets="all" />
 -    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="$(MicrosoftSourceLinkGitHubVersion)" PrivateAssets="All"/>
--  </ItemGroup>
+   </ItemGroup>
  
  </Project>
 diff --git a/build/dependencies.props b/build/dependencies.props
-index 23e1b910..254f709e 100644
+index 8203da57..2ac3eee7 100644
 --- a/build/dependencies.props
 +++ b/build/dependencies.props
-@@ -4,14 +4,14 @@
+@@ -2,14 +2,14 @@
+ 
+   <PropertyGroup>
      <AspNetCoreMinSupportedVersion>2.1.1</AspNetCoreMinSupportedVersion>
-     <MicrosoftAzureKeyVaultVersion>3.0.5</MicrosoftAzureKeyVaultVersion>
-     <MicrosoftAzureServicesAppAuthenticationVersion>1.0.3</MicrosoftAzureServicesAppAuthenticationVersion>
 -    <MicrosoftCSharpVersion>4.5.0</MicrosoftCSharpVersion>
 +    <MicrosoftCSharpVersion>4.7.0</MicrosoftCSharpVersion>
      <MicrosoftSourceLinkGitHubVersion>1.0.0</MicrosoftSourceLinkGitHubVersion>
@@ -68,21 +57,21 @@ index 23e1b910..254f709e 100644
  
  </Project>
 diff --git a/build/targets.props b/build/targets.props
-index eb2d3523..e9cde8f0 100644
+index 6f92780d..7b7225aa 100644
 --- a/build/targets.props
 +++ b/build/targets.props
 @@ -1,7 +1,7 @@
  <Project>
    <PropertyGroup>
--    <SrcTargets Condition="'$(LocalBuild)' != 'True'">net461;net462;net472;netstandard2.0;net6.0;net8.0</SrcTargets>
--    <SrcTargets Condition="'$(LocalBuild)' == 'True'">net461;netstandard2.0;net8.0</SrcTargets>
+-    <SrcTargets Condition="'$(LocalBuild)' != 'True'">net462;net472;netstandard2.0;net6.0;net8.0</SrcTargets>
+-    <SrcTargets Condition="'$(LocalBuild)' == 'True'">netstandard2.0;net8.0</SrcTargets>
 +    <SrcTargets Condition="'$(LocalBuild)' != 'True'">netstandard2.0;net6.0;net8.0</SrcTargets>
 +    <SrcTargets Condition="'$(LocalBuild)' == 'True'">netstandard2.0;net6.0</SrcTargets>
+     <SrcTargets Condition="'$(TargetNet9)' == 'True'">$(SrcTargets);net9.0</SrcTargets>
      <SrcStandardTargets>netstandard2.0</SrcStandardTargets>
    </PropertyGroup>
- </Project>
 diff --git a/buildConfiguration.xml b/buildConfiguration.xml
-index 06e064da..e6bb5701 100644
+index 0abda703..7c0862e5 100644
 --- a/buildConfiguration.xml
 +++ b/buildConfiguration.xml
 @@ -1,7 +1,7 @@
@@ -111,7 +100,7 @@ index f7a11afe..4a87af91 100644
 -
  </Project>
 diff --git a/src/Microsoft.IdentityModel.JsonWebTokens/Microsoft.IdentityModel.JsonWebTokens.csproj b/src/Microsoft.IdentityModel.JsonWebTokens/Microsoft.IdentityModel.JsonWebTokens.csproj
-index 52e979fe..5198986f 100644
+index ac4f4bc0..d7262c1d 100644
 --- a/src/Microsoft.IdentityModel.JsonWebTokens/Microsoft.IdentityModel.JsonWebTokens.csproj
 +++ b/src/Microsoft.IdentityModel.JsonWebTokens/Microsoft.IdentityModel.JsonWebTokens.csproj
 @@ -16,13 +16,6 @@
@@ -271,7 +260,7 @@ index 5131f40a..a3670b9d 100644
      <ProjectReference Include="..\Microsoft.IdentityModel.Tokens\Microsoft.IdentityModel.Tokens.csproj" />
    </ItemGroup>
 diff --git a/src/System.IdentityModel.Tokens.Jwt/System.IdentityModel.Tokens.Jwt.csproj b/src/System.IdentityModel.Tokens.Jwt/System.IdentityModel.Tokens.Jwt.csproj
-index 0e589c35..25d1ddb0 100644
+index bbb9ef2c..448ece2d 100644
 --- a/src/System.IdentityModel.Tokens.Jwt/System.IdentityModel.Tokens.Jwt.csproj
 +++ b/src/System.IdentityModel.Tokens.Jwt/System.IdentityModel.Tokens.Jwt.csproj
 @@ -15,13 +15,6 @@
@@ -288,3 +277,6 @@ index 0e589c35..25d1ddb0 100644
    <ItemGroup>
      <ProjectReference Include="..\Microsoft.IdentityModel.JsonWebTokens\Microsoft.IdentityModel.JsonWebTokens.csproj" />
      <ProjectReference Include="..\Microsoft.IdentityModel.Tokens\Microsoft.IdentityModel.Tokens.csproj" />
+-- 
+2.34.1
+

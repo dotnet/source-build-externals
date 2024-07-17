@@ -5,7 +5,7 @@ Subject: [PATCH] fix for source build
 
 ---
  build/common.props                                        | 6 ------
- build/dependencies.props                                  | 8 ++++----
+ build/dependencies.props                                  | 4 ++--
  build/targets.props                                       | 2 +-
  buildConfiguration.xml                                    | 2 +-
  .../Microsoft.IdentityModel.Abstractions.csproj           | 7 -------
@@ -21,7 +21,7 @@ Subject: [PATCH] fix for source build
  .../Microsoft.IdentityModel.Validators.csproj             | 7 -------
  .../Microsoft.IdentityModel.Xml.csproj                    | 7 -------
  .../System.IdentityModel.Tokens.Jwt.csproj                | 7 -------
- 17 files changed, 6 insertions(+), 98 deletions(-)
+ 17 files changed, 4 insertions(+), 96 deletions(-)
 
 diff --git a/build/common.props b/build/common.props
 index efd7e90e..05f908ef 100644
@@ -39,10 +39,10 @@ index efd7e90e..05f908ef 100644
 -
  </Project>
 diff --git a/build/dependencies.props b/build/dependencies.props
-index 8203da57..2ac3eee7 100644
+index 1e6f60cc..3287409f 100644
 --- a/build/dependencies.props
 +++ b/build/dependencies.props
-@@ -2,14 +2,14 @@
+@@ -2,12 +2,12 @@
  
    <PropertyGroup>
      <AspNetCoreMinSupportedVersion>2.1.1</AspNetCoreMinSupportedVersion>
@@ -53,14 +53,9 @@ index 8203da57..2ac3eee7 100644
      <NewtonsoftVersion>13.0.3</NewtonsoftVersion>
      <SystemMemoryVersion>4.5.5</SystemMemoryVersion>
 -    <SystemSecurityCryptographyCngVersion>4.5.0</SystemSecurityCryptographyCngVersion>
--    <SystemTextEncodingsWeb>4.7.2</SystemTextEncodingsWeb>
--    <SystemTextJson>4.7.2</SystemTextJson>
 +    <SystemSecurityCryptographyCngVersion>5.0.0</SystemSecurityCryptographyCngVersion>
-+    <SystemTextEncodingsWeb>7.0.0</SystemTextEncodingsWeb>
-+    <SystemTextJson>7.0.0</SystemTextJson>
+     <SystemTextJson>8.0.4</SystemTextJson>
    </PropertyGroup>
- 
- </Project>
 diff --git a/build/targets.props b/build/targets.props
 index 6f92780d..1c48acfb 100644
 --- a/build/targets.props

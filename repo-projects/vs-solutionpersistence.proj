@@ -7,7 +7,7 @@
 
     <!-- Flag to remove analyzers -->
     <EnvironmentVariables Include="SourceBuild=true" />
-    <EnvironmentVariables Include="GitVersioningVersion=3.6.141" />
+    <EnvironmentVariables Include="GitVersioningVersion=3.6.133" />
   </ItemGroup>
 
   <PropertyGroup>

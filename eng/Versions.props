@@ -6,6 +6,7 @@
     <MinorVersion>0</MinorVersion>
     <PatchVersion>0</PatchVersion>
     <SkipPackagePublishingVersionChecks>true</SkipPackagePublishingVersionChecks>
+    <MicrosoftBuildVersion>17.15.0-preview-25223-119</MicrosoftBuildVersion>
   </PropertyGroup>
   <PropertyGroup>
     <AbstractionsXunitReleaseVersion>2.0.3</AbstractionsXunitReleaseVersion>

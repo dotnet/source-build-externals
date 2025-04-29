@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Dependencies>
-  <Source Uri="https://github.com/dotnet/dotnet" Mapping="source-build-externals" Sha="c71a5e287b51dabb97b7e0be5c4ba9b11f840402" BarId="265935" />
+  <Source Uri="https://github.com/dotnet/dotnet" Mapping="source-build-externals" Sha="5fd0935290d20e7172918595a509a367df7d5bb6" BarId="266023" />
   <ToolsetDependencies>
     <Dependency Name="Microsoft.Build" Version="17.14.0-preview-24619-01">
       <Uri>https://github.com/dotnet/msbuild</Uri>
@@ -12,9 +12,9 @@
       <Sha>e9b99f554a3c298e1106ea171f5a0462780af2c5</Sha>
       <SourceBuild RepoName="msbuild" ManagedOnly="true" />
     </Dependency>
-    <Dependency Name="Microsoft.DotNet.Arcade.Sdk" Version="10.0.0-beta.25227.101">
+    <Dependency Name="Microsoft.DotNet.Arcade.Sdk" Version="10.0.0-beta.25228.101">
       <Uri>https://github.com/dotnet/dotnet</Uri>
-      <Sha>c71a5e287b51dabb97b7e0be5c4ba9b11f840402</Sha>
+      <Sha>5fd0935290d20e7172918595a509a367df7d5bb6</Sha>
     </Dependency>
     <!-- Intermediate is necessary for source build. -->
     <Dependency Name="Microsoft.SourceBuild.Intermediate.arcade" Version="10.0.0-beta.25222.2">

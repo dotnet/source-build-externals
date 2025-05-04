@@ -19,8 +19,18 @@
     <MSBuild Projects="@(_DependentProject)" Targets="Build" BuildInParallel="$(BuildInParallel)" StopOnFirstFailure="true" />
   </Target>
 
+  <Target Name="PrepareInnerClone">
+    <ItemGroup>
+      <RepoFileToCopy Include="$(OriginalProjectDirectory)**\*"
+                      Exclude="$(OriginalProjectDirectory)artifacts\**\*" />
+    </ItemGroup>
+
+    <Copy SourceFiles="@(RepoFileToCopy)" DestinationFolder="$(ProjectDirectory)%(RecursiveDir)" SkipUnchangedFiles="true" />
+  </Target>
+
   <Target Name="ApplyPatches"
           Condition="'@(PatchToApply)' != '' and '$(SkipPatches)' != 'true'"
+          DependsOnTargets="PrepareInnerClone"
           Inputs="@(PatchToApply)"
           Outputs="$(BaseIntermediateOutputPath)ApplyPatches.complete" >
     <PropertyGroup>
@@ -101,7 +111,7 @@
   <!-- Root target for nuget updates. Removes the existing nuget config files, then adds a new one for dependencies
        if necessary. -->
   <Target Name="UpdateNuGetConfig"
-          DependsOnTargets="RemoveNuGetConfig;AddNewNuGetConfigForDependencies"
+          DependsOnTargets="PrepareInnerClone;RemoveNuGetConfig;AddNewNuGetConfigForDependencies"
           Condition="'$(NuGetConfigFile)' != '' OR '@(NuGetConfigFiles)' != '' OR '@(RepositoryReference)' != ''"
           Inputs="$(MSBuildProjectFullPath)"
           Outputs="$(BaseIntermediateOutputPath)UpdateNuGetConfig.complete">
@@ -114,7 +124,7 @@
 
   <UsingTask TaskName="UpdateJson" AssemblyFile="$(XPlatSourceBuildTasksAssembly)" TaskFactory="TaskHostFactory" />
   <Target Name="UpdateGlobalJsonVersions"
-          DependsOnTargets="ResolveProjectReferences"
+          DependsOnTargets="PrepareInnerClone;ResolveProjectReferences"
           Condition="'$(GlobalJsonFile)' != ''"
           Inputs="$(MSBuildProjectFullPath)"
           Outputs="$(BaseIntermediateOutputPath)UpdateGlobalJsonVersions.complete">
@@ -139,7 +149,7 @@
   </Target>
 
   <Target Name="RepoBuild"
-          DependsOnTargets="PrepareOutputDirectories"
+          DependsOnTargets="PrepareOutputDirectories;PrepareInnerClone"
           Inputs="$(MSBuildProjectFullPath)"
           Outputs="$(BaseIntermediateOutputPath)RepoBuild.complete">
     <ItemGroup>
@@ -180,7 +190,7 @@
 
   <Target Name="Package"
           Condition="'$(BuildPackagesCommand)' != ''"
-          DependsOnTargets="PrepareOutputDirectories"
+          DependsOnTargets="PrepareOutputDirectories;PrepareInnerClone"
           Inputs="$(MSBuildProjectFullPath)"
           Outputs="$(BaseIntermediateOutputPath)Package.complete">
     <Message Importance="High" Text="[$([System.DateTime]::Now.ToString('HH:mm:ss.ff'))] Packaging '$(RepositoryName)'" />
@@ -218,6 +228,7 @@
   <Target Name="Build"
           DependsOnTargets="
             BuildRepoReferences;
+            PrepareInnerClone;
             ApplyPatches;
             UpdateNuGetConfig;
             UpdateGlobalJsonVersions;

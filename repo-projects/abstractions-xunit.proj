@@ -3,6 +3,7 @@
   <PropertyGroup>
     <PackagesOutput>$(ProjectDirectory)src/xunit.abstractions/bin/$(Configuration)/</PackagesOutput>
     <XunitAbstractionsKeyFilePath>$(KeysDir)xunit.abstractions.snk</XunitAbstractionsKeyFilePath>
+    <GlobalJsonFile>$(ProjectDirectory)global.json</GlobalJsonFile>
     <CustomRepoBuild>true</CustomRepoBuild>
   </PropertyGroup>
 

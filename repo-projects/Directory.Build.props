@@ -4,11 +4,12 @@
 
   <PropertyGroup>
     <TargetFramework>$(NetCurrent)</TargetFramework>
-
     <RepositoryName>$(MSBuildProjectName)</RepositoryName>
-    <ProjectDirectory>$(SubmoduleDirectory)$(RepositoryName)/</ProjectDirectory>
 
+    <OriginalProjectDirectory>$([MSBuild]::NormalizeDirectory('$(SubmoduleDirectory)', '$(RepositoryName)'))</OriginalProjectDirectory>
+    <ProjectDirectory>$([MSBuild]::NormalizeDirectory('$(OriginalProjectDirectory)', 'artifacts', 'clone'))</ProjectDirectory>
     <ArtifactsLogRepoDir>$([MSBuild]::NormalizeDirectory('$(ArtifactsLogDir)', '$(RepositoryName)'))</ArtifactsLogRepoDir>
+
     <MinimalConsoleLogOutput Condition="'$(MinimalConsoleLogOutput)' == ''">true</MinimalConsoleLogOutput>
     <RepoConsoleLogFile>$(ArtifactsLogRepoDir)$(RepositoryName).log</RepoConsoleLogFile>
     <RedirectRepoOutputToLog Condition="'$(MinimalConsoleLogOutput)' == 'true'">&gt; $(RepoConsoleLogFile) 2&gt;&amp;1</RedirectRepoOutputToLog>

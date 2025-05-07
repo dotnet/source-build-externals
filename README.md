@@ -1,24 +1,33 @@
 # .NET Source Build Externals
 
-This repo contains the source for components that resides outside of the [dotnet](https://github.com/dotnet)
-organization required to build .NET from source. Examples include Newtonsoft.Json
-and Application Insights for .NET. Git submodules are utilized to reference the
-external source. This repo contains the infrastructure to build these external
-repos within the .NET source build. See
-[dotnet/source-build](https://github.com/dotnet/source-build) for more details on
-.NET source build.
+This repo contains the source for external components required to build the .NET product from source.
+External components are produced from repos outside of the core .NET product repos.
+
+There are two types of externals components supported:
+
+1. **External Repos:** These are repos that do not use the common .NET build infrastructure (e.g. [Arcade](https://github.com/dotnet/arcade)).
+Git submodules are utilized to reference the external source.
+Special infrastructure is utilized to build the required components from these repos.
+Examples include Newtonsoft.Json and Application Insights for .NET.
+
+1. **Text Only Packages:** These are packages that contain text only content, they do not contain any binaries.
+The package content is checked in as static files and the packages is re-generated as part of the build.
+Examples include microsoft.build.notargets and microsoft.private.intellisense.
+
+See [dotnet/source-build](https://github.com/dotnet/source-build) for more details on .NET source build.
 
 ## How to Build
 
-This repo utilizes the .NET [Arcade](https://github.com/dotnet/arcade) build
-infrastructure. Since this repo is intended solely for source build, it usually
- makes sense to build with the -sb (source build) flag.
+This repo utilizes the .NET [Arcade](https://github.com/dotnet/arcade) build infrastructure.
+Since this repo is intended solely for source build, it usually makes sense to build with the -sb (source build) flag.
 
 ``` bash
 ./build.sh -sb
 ```
 
-## Adding a New External Component
+## External Repos
+
+### Adding a New External Repo
 
 1. Add the repo as a submodule to `./src/repos/src`
 
@@ -39,7 +48,7 @@ must be applied via [patches](src/repos/patches). See [below](#patches) for more
 
 1. If the original binaries have strong name signatures, validate the source built ones have them as well.
 
-## Updating an External Component to a Newer Version
+### Updating an External Repo to a Newer Version
 
 1. Update the `./src/repos/src/<external_repo_dir>` to the desired sha
 
@@ -68,7 +77,7 @@ must be applied via [patches](src/repos/patches). See [below](#patches) for more
 1. After the PR is merged to update a component, coordination is often needed in the darc dependency flows. The source-build-external update
 may need to flow in at the same time as the cooresponding changes in product repos which take a dependency on the new component version.
 
-### Updating an External Component Used in a Pre-SBE Repo
+### Updating an External Repo Used in a Pre-SBE Repo
 
 A _Pre-SBE_ repo is a repo that is built before source-build-externals during the product build.
 
@@ -96,7 +105,7 @@ The steps outlined below will enable source-build to adjust the package version 
 
     1. **Update the component**: Once the changes have propagated, you can update the component as usual. For guidance, follow the steps in [`Updating an External Component to a Newer Version`](#updating-an-external-component-to-a-newer-version).
 
-## Patches
+### Patches
 
 1. When creating/updating patches, it is desirable to backport the changes whenever feasible as this reduces
 the maintenance burden when [updating a component to a newer version](#updating-an-external-component-to-a-newer-version).
@@ -118,6 +127,18 @@ For example, to apply *all* `humanizer` patches:
 # cd src/humanizer
 # git am "../../patches/humanizer/*"
 ```
+
+## Text Only Packages
+
+### Adding a New Text Only Package
+
+Use the [source-build-reference-packages tooling](https://github.com/dotnet/source-build-reference-packages?tab=readme-ov-file#text-only) to generate new packages.
+Copy the generated content to `src/textOnlyPackages`
+
+> [!NOTE]
+>
+> The tooling experience will be improved with https://github.com/dotnet/source-build/issues/5145.
+
 ## Found an Issue?
 
 Source build related issues are tracked in the [source build repo](https://github.com/dotnet/source-build/).

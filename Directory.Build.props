@@ -11,9 +11,9 @@
     <IsShipping>false</IsShipping>
 
     <ProjectDir>$(MSBuildThisFileDirectory)</ProjectDir>
-    <KeysDir>$(ProjectDir)keys/</KeysDir>
-    <SubmoduleDirectory>$(ProjectDir)src/</SubmoduleDirectory>
-    <PatchesDir>$(ProjectDir)patches/</PatchesDir>
+    <KeysDir>$(ProjectDir)src/repos/keys/</KeysDir>
+    <SubmoduleDirectory>$(ProjectDir)src/repos/src/</SubmoduleDirectory>
+    <PatchesDir>$(ProjectDir)src/repos/patches/</PatchesDir>
     <XPlatSourceBuildTasksAssembly>$([MSBuild]::NormalizePath('$(ArtifactsBinDir)', 'Microsoft.DotNet.SourceBuild.Tasks.XPlat', '$(Configuration)', '$(NetCurrent)', 'Microsoft.DotNet.SourceBuild.Tasks.XPlat.dll'))</XPlatSourceBuildTasksAssembly>
 
     <LogVerbosity Condition="'$(LogVerbosity)' == ''">minimal</LogVerbosity>

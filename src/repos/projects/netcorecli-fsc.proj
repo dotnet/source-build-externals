@@ -9,13 +9,13 @@
 
     <BuildCommandArgs>pack</BuildCommandArgs>
     <BuildCommandArgs>$(BuildCommandArgs) -c $(Configuration)</BuildCommandArgs>
-    <BuildCommandArgs>$(BuildCommandArgs) --output $(ArtifactsShippingPackagesDir)</BuildCommandArgs>
+    <BuildCommandArgs>$(BuildCommandArgs) --output $(ArtifactsNonShippingPackagesDir)</BuildCommandArgs>
     <BuildCommandArgs>$(BuildCommandArgs) --no-build FSharp.NET.Sdk.csproj</BuildCommandArgs>
     <BuildCommandArgs>$(BuildCommandArgs) /p:NuspecFile=FSharp.NET.Sdk.nuspec</BuildCommandArgs>
     <BuildCommandArgs>$(BuildCommandArgs) $(OutputArgs)</BuildCommandArgs>
     <BuildCommand>$(DotNetTool) $(BuildCommandArgs)</BuildCommand>
 
-    <PackagesOutput>$(ArtifactsShippingPackagesDir)</PackagesOutput>
+    <PackagesOutput>$(ArtifactsNonShippingPackagesDir)</PackagesOutput>
   </PropertyGroup>
 
   <Target Name="RepoRestore" BeforeTargets="RepoBuild" DependsOnTargets="UpdateNuGetConfig">

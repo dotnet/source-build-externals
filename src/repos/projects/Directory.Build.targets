@@ -195,7 +195,7 @@
       <_BuiltPackages Include="$(PackagesOutput)/*.nupkg" Exclude="$(PackagesOutput)/*.symbols.nupkg"/>
     </ItemGroup>
 
-    <Copy SourceFiles="@(_BuiltPackages)" DestinationFolder="$(ArtifactsShippingPackagesDir)" SkipUnchangedFiles="true" UseHardlinksIfPossible="true" />
+    <Copy SourceFiles="@(_BuiltPackages)" DestinationFolder="$(ArtifactsNonShippingPackagesDir)" SkipUnchangedFiles="true" UseHardlinksIfPossible="true" />
   </Target>
 
   <Target Name="Build"

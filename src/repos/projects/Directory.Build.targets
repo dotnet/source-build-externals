@@ -101,7 +101,7 @@
 ]]>
       </NewNuGetConfigContent>
     </PropertyGroup>
-    <WriteLinesToFile Lines="$(NewNuGetConfigContent)" File="$(NewNuGetConfigFile)" />
+    <WriteLinesToFile Lines="$(NewNuGetConfigContent)" File="$(NewNuGetConfigFile)" Overwrite="True" />
 
     <AddSourceToNuGetConfig NuGetConfigFile="$(NewNuGetConfigFile)"
                             SourceName="%(_DependencyProjectsPackagesOutput.InnerRepoName)"

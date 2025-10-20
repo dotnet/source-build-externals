@@ -40,7 +40,7 @@ stages:
         pool:
           name: $(DncEngPublicBuildPool)
           demands: ImageOverride -equals Build.Ubuntu.2204.Amd64.Open
-        container: 'mcr.microsoft.com/dotnet-buildtools/prereqs:centos-stream10'
+        container: 'mcr.microsoft.com/dotnet-buildtools/prereqs:centos-stream-10-amd64'
         workspace:
           clean: all
         variables:

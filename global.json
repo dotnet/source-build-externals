@@ -1,4 +1,13 @@
 {
+  "sdk": {
+    "version": "9.0.112",
+    "rollForward": "latestPatch",
+    "paths": [
+      ".dotnet",
+      "$host$"
+    ],
+    "errorMessage": "The required .NET SDK wasn't found."
+  },
   "tools": {
     "dotnet": "9.0.112"
   },

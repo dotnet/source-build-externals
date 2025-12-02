@@ -5,8 +5,7 @@
     "paths": [
       ".dotnet",
       "$host$"
-    ],
-    "errorMessage": "The required .NET SDK wasn't found."
+    ]
   },
   "tools": {
     "dotnet": "9.0.112"

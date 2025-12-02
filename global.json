@@ -1,4 +1,12 @@
 {
+  "sdk": {
+    "version": "9.0.112",
+    "rollForward": "latestPatch",
+    "paths": [
+      ".dotnet",
+      "$host$"
+    ]
+  },
   "tools": {
     "dotnet": "9.0.112"
   },

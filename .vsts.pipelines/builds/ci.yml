@@ -53,6 +53,7 @@ stages:
         steps:
         - checkout: self
           submodules: recursive
+          persistCredentials: true
         - template: /eng/common/templates/steps/source-build.yml
 
 - ${{ if and(ne(variables['System.TeamProject'], 'public'), notin(variables['Build.Reason'], 'PullRequest')) }}:
